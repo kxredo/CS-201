@@ -1,25 +1,37 @@
 
 public class q19_simplify {
 
-    public HashTable simplify() {
-        HashTable newTable = new HashTable(hashTable.length); // Assuming same size
+    /*
+Write a method that simplifies a hash table by creating a new hash
+ table containing elements from the original hash table, where
+ For single occurrence of a value, copy that value to the new table
+ For multiple occurrences of that value, copy that value only once
+ to the new table
+ Write the function both array and linked list implementations. You are
+ allowed to use linked list and hashing methods.
+ Hash simplify()
+     */
+    public Hash simplify() {
+        Hash newTable = new Hash(table.length);
+        for (int i = 0; i < table.length; i++) {
+            if (table[i] != null) {
+                int count = 0;
+                int index = hashFunction(table[i].key);
 
-        for (int i = 0; i < hashTable.length; i++) {
-            if (hashTable[i] != null) {
-                int key = hashTable[i].key;
-                boolean inserted = false;
-                for (int j = 0; j < newTable.length; j++) {
-                    if (newTable[j] != null && newTable[j].key == key) {
-                        inserted = true;
+                while (newTable.table[index] != null) {
+                    if (newTable.table[index].key == table[i].key) {
+                        count++;
                         break;
                     }
+                    index = (index + 1) % newTable.table.length;
                 }
-                if (!inserted) {
-                    newTable.insert(hashTable[i]);
+
+                if (count == 0) {
+                    newTable.table[index] = new Element(table[i].key);
                 }
             }
         }
-
         return newTable;
     }
+
 }

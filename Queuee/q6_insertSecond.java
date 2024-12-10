@@ -1,8 +1,17 @@
 package Queuee;
 
+import org.w3c.dom.Node;
+
 import stackss.Element;
 
 public class q6_insertSecond {
+
+/*
+Write a function that adds a new element after the front element of the
+ queue. Write the function for both array and linked list implementa
+tions.
+ void insertSecond(Element newElement)
+ */
     // Array Implementation
     public void insertSecond(Element newElement) {
         if (isFull()) {

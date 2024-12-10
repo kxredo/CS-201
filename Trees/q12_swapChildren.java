@@ -3,7 +3,11 @@ package Trees;
 import javax.swing.tree.TreeNode;
 
 public class q12_swapChildren {
-
+/*
+Write a function that swaps left and right children of all nodes in a
+ binary search tree.
+ void swapChildren()
+ */
     void swapChildren2() {
         TreeNode temp = left;
         left = right;

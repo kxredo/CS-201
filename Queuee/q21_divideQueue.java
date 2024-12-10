@@ -6,36 +6,31 @@ import org.w3c.dom.Node;
 
 public class q21_divideQueue {
 
-    public Queue[] divideQueue(int k) {
-
-        Queue[] queues = new Queue[k];
+    Queue[] divideQueue(int k) {
+        Queue[] result = new Queue[k];
         for (int i = 0; i < k; i++) {
-            queues[i] = new Queue();
+            result[i] = new Queue();
         }
 
         Node current = first;
         int index = 0;
-        int count = 0;
 
         while (current != null) {
-            Node newNode = new Node(current.data);
-            if (queues[index].first == null) {
-                queues[index].first = newNode;
-                queues[index].last = newNode;
-            } else {
-                queues[index].last.next = newNode;
-                queues[index].last = newNode;
-            }
-            queues[index].size++;
+            Node newNode = new Node(current.key, null);
 
-            count++;
-            if (count == size / k) {
-                index++;
-                count = 0;
+            if (result[index].first == null) {
+                result[index].first = newNode;
+                result[index].last = newNode;
+            } else {
+                result[index].last.next = newNode;
+                result[index].last = newNode;
             }
+
             current = current.next;
+            index = (index + 1) % k;
         }
 
-        return queues;
+        return result;
     }
+
 }

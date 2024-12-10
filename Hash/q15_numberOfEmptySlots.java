@@ -1,6 +1,10 @@
 
 public class q15_numberOfEmptySlots {
-
+/*
+Write function that finds the number of empty slots in an hash table
+ (For both array and linked list implementations).
+ int numberOfEmptySlots()
+ */
     public int numberOfEmptySlots() {
         int count = 0;
 

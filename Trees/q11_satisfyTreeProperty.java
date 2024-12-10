@@ -22,5 +22,18 @@ public class q11_satisfyTreeProperty {
             return true;
         }
     }
+// -----------------------------------------------------------------------------------------------------------------------
+    boolean satisfyTreeProperty() {
+        return checkProperty(Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    
+    boolean checkProperty(int min, int max) {
+        if (this == null) return true;
+        if (key <= min || key >= max) return false;
+        boolean leftValid = left == null || left.checkProperty(min, key);
+        boolean rightValid = right == null || right.checkProperty(key, max);
+        return leftValid && rightValid;
+    }
+    
 
 }

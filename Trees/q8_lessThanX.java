@@ -1,21 +1,26 @@
 package Trees;
 
 public class q8_lessThanX {
+
     /*
      Given an integer X, write a function that computes the number of
  nodes whose key is less than X.
  int lessThanX()
      */
 
-    public int lessThanX(int X) {
-        if (this == null) {
-            return 0;
+    int lessThanX(int X) {
+        
+        int count = 0;
+        if (key < X) {
+            count++;
         }
-
-        if (data < X) {
-            return 1 + left.lessThanX(X) + right.lessThanX(X);
-        } else {
-            return left.lessThanX(X);
+        if (left != null) {
+            count += left.lessThanX(X);
         }
+        if (right != null) {
+            count += right.lessThanX(X);
+        }
+        return count;
     }
+
 }

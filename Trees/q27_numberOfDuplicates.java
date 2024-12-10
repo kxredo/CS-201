@@ -2,18 +2,6 @@ package Trees;
 
 public class q27_numberOfDuplicates {
 
-    class TreeNode {
-
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-            this.left = null;
-            this.right = null;
-        }
-
         // Recursive method to count duplicates in the binary search tree
         int numberOfDuplicates() {
             int count = 0;

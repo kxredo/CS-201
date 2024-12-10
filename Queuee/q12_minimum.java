@@ -4,6 +4,12 @@ import org.w3c.dom.Node;
 
 public class q12_minimum {
 
+    /*
+Write a method where the method returns the minimum number in a
+ queue. Write the function for both array and linked list implementa
+tions. Do not use any class or external methods except isEmpty().
+ int minimum()
+     */
     public int minimum() {
         if (!isEmpty()) {
 

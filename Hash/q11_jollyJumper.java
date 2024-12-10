@@ -1,36 +1,37 @@
 
 public class q11_jollyJumper {
 
+    /*
+A sequence of n > 0 integers is called a jolly jumper if the absolute
+ values of the differences between successive elements take on all possible
+ values 1 through n- 1. For instance, 1 4 2 3 is a jolly jumper, because
+ the absolute differences are 3, 2, and 1, respectively. Write a function
+ to determine whether a sequence of numbers is a jolly jumper.
+ boolean jollyJumper(int[] sequence)
+     */
+
     public boolean jollyJumper(int[] sequence) {
         int n = sequence.length;
 
-        // If there is only one element, it's trivially a jolly jumper
         if (n == 1) {
             return true;
         }
-
-        // Create an array to track the differences
         boolean[] diffs = new boolean[n - 1];
 
-        // Calculate the absolute differences and mark the corresponding positions in the diffs array
         for (int i = 1; i < n; i++) {
             int diff = Math.abs(sequence[i] - sequence[i - 1]);
-            // If the difference is between 1 and n-1, mark it
             if (diff >= 1 && diff < n) {
                 diffs[diff - 1] = true;
             } else {
-                return false; // Invalid difference, return false
+                return false;
             }
         }
-
-        // Check if all values from 1 to n-1 are covered
         for (boolean isPresent : diffs) {
             if (!isPresent) {
-                return false; // If any difference is missing, it's not a jolly jumper
+                return false;
             }
         }
-
-        return true; // All differences are present
+        return true;
     }
 
 }

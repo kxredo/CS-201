@@ -1,7 +1,13 @@
 package Trees;
 
 public class q29_depthOfNode {
-
+/*
+Write a non-recursive method in Tree class that returns the depth of
+ the node containing a given data X in a binary search tree. You are not
+ allowed to use any tree methods, just attributes, constructors, getters
+ and setters.
+ int depthOfNode(int X)
+ */
     int depthOfNode(int X) {
         int depth = 0;
         TreeNode current = this;  // Start from the root node
@@ -21,4 +27,5 @@ public class q29_depthOfNode {
         // If the node with value X is not found, return -1
         return -1;
     }
+
 }

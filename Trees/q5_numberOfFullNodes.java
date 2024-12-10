@@ -7,9 +7,6 @@ public class q5_numberOfFullNodes {
  int numberOfFullNodes()
  */
     public int numberOfFullNodes() {
-        if (this == null) {
-            return 0;
-        }
 
         int count = 0;
         if (left != null && right != null) {
@@ -19,3 +16,4 @@ public class q5_numberOfFullNodes {
         return count + left.numberOfFullNodes() + right.numberOfFullNodes();
     }
 }
+

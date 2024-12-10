@@ -1,33 +1,34 @@
 package Trees;
 // SOLVED IN LAB
+
 public class q17_leftistOrRightist {
 
-    int leftistOrRightist2() {
-        int count = 0;
-        if (left != null && right == null) {
-            count = 1; // leftist node
-        }
-        if (right != null && left == null) {
-            count = -1; // rightist node
-        }
-
-        int leftCount = 0, rightCount = 0;
-        if (left != null) {
-            leftCount = left.leftistOrRightist2();
-        }
-        if (right != null) {
-            rightCount = right.leftistOrRightist2();
-        }
-
-        return count + leftCount + rightCount;
-    }
-
+    /*
+Write a function that finds the difference between the number of leftist
+ nodes and rightist nodes in a binary search tree. A node is leftist
+ (rightist) if it has only left (right) child.
+ int leftistOrRightist ()
+     */
     int leftistOrRightist() {
-        if (root != null) {
-            return root.leftistOrRightist2();
-        } else {
+        if (this == null) {
             return 0;
         }
+        int leftist = 0, rightist = 0;
+
+        if (left != null && right == null) {
+            leftist = 1;
+        } else if (right != null && left == null) {
+            rightist = 1;
+        }
+
+        if (left != null) {
+            leftist += left.leftistOrRightist();
+        }
+        if (right != null) {
+            rightist += right.leftistOrRightist();
+        }
+
+        return leftist - rightist;
     }
 
 }

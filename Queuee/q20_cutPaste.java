@@ -3,30 +3,27 @@ package Queuee;
 import java.util.Queue;
 
 public class q20_cutPaste {
-
-    public void cutPaste(Queue dest, int p, int q) {
-
-        // Calculate the number of elements to be copied
-        int numElementsToCopy = q - p + 1;
-
-        // Shift elements to the left to create space for the copied elements
-        for (int i = (first + q) % N; i <= last; i++) {
-            array[(i - numElementsToCopy) % N] = array[i % N];
+/*
+Write the method for array implementation
+ void cutPaste(Queue dest, int p, int q)
+ which cuts all the elements between indexes p and q from the original
+ queue and inserts at the end to the dest queue. You are not allowed to
+ use enqueue, dequeue, isEmpty functions. You can assume the desti
+nation queue has enough space for insertion. Your method should run
+ in O(N) time.
+ */
+    void cutPaste(Queue dest, int p, int q) {
+        for (int i = p; i <= q; i++) {
+            dest.array[dest.rear] = array[i];
+            dest.rear = (dest.rear + 1) % dest.size;
         }
 
-        // Copy the elements to the destination queue
-        int destIndex = dest.last;
-        for (int i = p - 1; i < q; i++) {
-            dest.array[(destIndex + 1) % dest.N] = array[(first + i) % N];
-            destIndex = (destIndex + 1) % dest.N;
+        int shift = q - p + 1;
+        for (int i = p; i < rear; i++) {
+            array[i] = array[i + shift];
         }
 
-        // Update the last index and size of the source queue
-        last = (last - numElementsToCopy) % N;
-        size -= numElementsToCopy;
-
-        // Update the last index and size of the destination queue
-        dest.last = destIndex;
-        dest.size += numElementsToCopy;
+        rear = (rear - shift + size) % size;
     }
+
 }

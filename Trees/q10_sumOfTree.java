@@ -1,24 +1,25 @@
 package Trees;
 
 public class q10_sumOfTree {
-/*
+
+    /*
 Write a function that computes the sum of all keys in a binary search tree.
 int sumOfTree()
- */
+     */
     int sumOfTree2() {
-        if (left == null && right == null) {
-            return val;
+        if (this == null) {
+            return 0;
         }
-        int total = val;
+        int sum = key;
         if (left != null) {
-            total += left.sumOfTree2();
+            sum += left.sumOfTree();
         }
         if (right != null) {
-            total += right.sumOfTree2();
+            sum += right.sumOfTree();
         }
-        return total;
+        return sum;
     }
-    
+
     int sumOfTree() {
         if (root != null) {
             return root.sumOfTree2();
@@ -26,5 +27,5 @@ int sumOfTree()
             return 0;
         }
     }
-    
+
 }

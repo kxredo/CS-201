@@ -8,10 +8,6 @@ Write a function that deletes all leaf nodes from a binary search tree.
 void deleteLeafNodes()
  */
     public void deleteLeafNodes() {
-        if (this == null) {
-            return;
-        }
-
         if (left == null && right == null) {
             this = null;
         } else {

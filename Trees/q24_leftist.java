@@ -20,4 +20,6 @@ public class q24_leftist {
 
         return count;
     }
+
+
 }
