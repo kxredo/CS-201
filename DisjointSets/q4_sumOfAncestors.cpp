@@ -3,9 +3,9 @@ Given the index of a set, write a function that computes the sum of all
  int sumOfAncestors(int index)
 
  int DisjointSet::sumOfAncestors(int index) {
-    int sum = 0;
+    int sum = 0; // compute the sum
     int parent = sets[index].getParent();
-    while (parent != index) {
+    while (parent != index) { 
         sum += parent;
         index = parent;
         parent = sets[index].getParent();

@@ -1,8 +1,7 @@
-WritethemethodinDisjointSetclass
- int∗
- getSetWithIndex(int index)
- whichreturnstheindexesofallsetsinthedisjointsetwhereasetwith
- indexindexisinthatset.
+Write the method in DisjointSet class
+ int∗ getSetWithIndex(int index)
+ which returns the indexes of all sets in the disjointset where a set with
+ index index is in that set.
 
 int* DisjointSet::getSetWithIndex(int index, int& setSize) {
     int root = findSetIterative(index);

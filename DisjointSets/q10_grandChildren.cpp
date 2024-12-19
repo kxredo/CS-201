@@ -1,5 +1,5 @@
 Given the index of a set, write a method that returns the indexes of
- its grandchildrenas a linked list. Do not use any class or external
+ its grandchildren as a linked list. Do not use any class or external
  methods.
  LinkedList grandChildren(int index)
 

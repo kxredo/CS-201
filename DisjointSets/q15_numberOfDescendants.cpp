@@ -1,6 +1,5 @@
 Write the method
- int∗ 
-numberOfDescendants(int index)
+ int∗ numberOfDescendants(int index)
  which returns the descendants (children, grandchildren, grandgrand
 children, etc.) of set with index index. Your method should run in
  O(N) time. The size of the returning array should be as much as
