@@ -1,21 +1,25 @@
+Given index of a d-heap node and a level l, write a recursive function
+that returns the number of descendants at level l of that heap node.
+Level 1 corresponds to children, Level 2 corresponds grandchildren,
+Level 3 corresponds grand grand children of that heap node.
+int descendants(int no, int level )
 
+int Heap::descendants(int no, int level) {
+    if (level < 1) return 0;
 
-int descendants(int no, int level, int d, int* heap, int count) {
-    if (level <= 0) return 0;
-
-    int numDescendants = 0;
-    int startIndex = d * no + 1;
-    int endIndex = d * no + d;
+    int countDescendants = 0;
+    int firstChild = no * d + 1;
+    int lastChildIndex = no * d + d;
 
     if (level == 1) {
-        for (int i = startIndex; i <= endIndex && i < count; ++i) {
-            numDescendants++;
+        for (int i = firstChild; i <= lastChild && i < count; ++i) {
+            countDescendants++;
         }
     } else {
-        for (int i = startIndex; i <= endIndex && i < count; ++i) {
-            numDescendants += descendants(i, level - 1, d, heap, count);
+        for (int i = firstChild; i <= lastChild && i < count; ++i) {
+            countDescendants += descendants(i, level - 1);
         }
     }
 
-    return numDescendants;
+    return countDescendants;
 }

@@ -1,36 +1,33 @@
+Write a method which checks if two graphs are the same. Assume that,
+ the method is written in the Adjacency list representation of a graph.
+ boolean isSame(Graph g)
 
+namespace list {
 
-#include <vector>
-#include <algorithm>
-
-bool GraphList::isSame(const GraphList& g) const {
-    if (vertexCount != g.vertexCount) return false;
-
-    for (int i = 0; i < vertexCount; i++) {
-        if (adjList[i].size() != g.adjList[i].size()) return false;
-
-        int thisNeighbors[vertexCount];
-        int otherNeighbors[vertexCount];
-        int index = 0;
-
-        for (const auto& edge : adjList[i]) {
-            thisNeighbors[index] = edge.to;
-            index++;
+    bool Graph::isSame(const Graph& g) const {
+        if (vertexCount != g.vertexCount) {
+            return false;
         }
 
-        index = 0;
-        for (const auto& edge : g.adjList[i]) {
-            otherNeighbors[index] = edge.to;
-            index++;
+        for (int i = 0; i < vertexCount; ++i) {
+            Edge *edge1 = edges[i].getHead();
+            Edge *edge2 = g.edges[i].getHead();
+            
+            // Compare all edges for each vertex
+            while (edge1 != nullptr && edge2 != nullptr) {
+                if (edge1->getTo() != edge2->getTo() || edge1->getWeight() != edge2->getWeight()) {
+                    return false;
+                }
+                edge1 = edge1->getNext();
+                edge2 = edge2->getNext();
+            }
+            
+            if (edge1 != nullptr || edge2 != nullptr) {
+                return false; // Different number of edges
+            }
         }
-
-        std::sort(thisNeighbors, thisNeighbors + adjList[i].size());
-        std::sort(otherNeighbors, otherNeighbors + g.adjList[i].size());
-
-        for (int j = 0; j < adjList[i].size(); j++) {
-            if (thisNeighbors[j] != otherNeighbors[j]) return false;
-        }
+        
+        return true;
     }
 
-    return true;
 }

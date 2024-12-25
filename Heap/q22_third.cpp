@@ -6,38 +6,39 @@ should run in O(d2) time.
 
 
 int MaxDHeap::third() {
-    if (this->count < 3) {
-        throw std::runtime_error("Heap does not contain enough elements.");
-    }
+    
+    int second = 0;
+    int third = 0;
 
-    int firstMax = array[0].getData(); // Max element
-    int secondMax = INT_MIN, thirdMax = INT_MIN;
-
-    // Traverse all children of the root to find the top 3 max elements
-    for (int i = 1; i <= d && i < this->count; ++i) {
-        int childData = array[i].getData();
-        if (childData > secondMax) {
-            thirdMax = secondMax;
-            secondMax = childData;
-        } else if (childData > thirdMax) {
-            thirdMax = childData;
-        }
-    }
-
-    // Traverse all grandchildren of the root to find the third max element
-    for (int i = 1; i <= d && i < this->count; ++i) {
-        for (int j = 1; j <= d && d * i + j < this->count; ++j) {
-            int grandChildData = array[d * i + j].getData();
-            if (grandChildData > thirdMax) {
-                if (grandChildData > secondMax) {
-                    thirdMax = secondMax;
-                    secondMax = grandChildData;
-                } else {
-                    thirdMax = grandChildData;
+    for(int i = 0; i <= d; i++){
+        int child = i;
+        if(child < count){
+            if(array[child].getData() > second){
+                third = second;
+                second = array[child].getData();
+            } else {
+                if(array[child].getData() > third){
+                    third = array[child].getData();
                 }
             }
         }
     }
 
-    return thirdMax;
+    // Traverse all grandchildren of the root to find the third max element
+    for(int i = 0; i <= d; i++){
+        for(int j = 0; j <= d; j++){
+            int grandChild = d*i + j;
+            if(grandChild < count){
+                if(array[grandChild].getData() > second){
+                    third = second;
+                    second = array[grandChild].getData();
+                } else {
+                    if(array[grandChild].getData() > third){
+                        third = array[grandChild].getData();
+                    }
+                }
+            }
+        }
+    }
+    return third;
 }

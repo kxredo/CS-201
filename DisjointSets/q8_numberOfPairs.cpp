@@ -3,20 +3,21 @@ Write a function that calculates the number of pair disjoint sets in a
  that disjoint set is 2.
  int numberOfPairs()
 
-int DisjointSet::numberOfPairs() {
-    int countPairs = 0;
-    for (int i = 0; i < this->count; ++i) {
-        if (sets[i].getParent() == i) {
-            int childCount = 0;
-            for (int j = 0; j < this->count; ++j) {
-                if (i != j && sets[j].getParent() == i) {
-                    childCount++;
-                }
-            }
-            if (childCount == 1) { // If there's exactly one child, it forms a pair (2 elements)
-                countPairs++;
-            }
+int DisjointSet::countPairDisjointSets() {
+    int pairCount = 0;
+    int* setSizes = new int[count]();
+
+    for (int i = 0; i < count; ++i) {
+        int root = findSetIterative(i);
+        setSizes[root]++;
+    }
+
+    for (int i = 0; i < count; ++i) {
+        if (setSizes[i] == 2) {
+            pairCount++;
         }
     }
-    return countPairs;
+
+    delete[] setSizes;
+    return pairCount;
 }

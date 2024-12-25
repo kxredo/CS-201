@@ -1,24 +1,39 @@
+Write a function that finds the median weight in a weighted graph.
+ Write the function for adjacency matrix representation.
+ int medianWeight()
+ 
+int Graph::medianWeight() const {
+    int weights[vertexCount * vertexCount]; // Assuming this is large enough
+    int count = 0;
 
-#include <vector>
-#include <algorithm>
-
-int GraphMatrix::medianWeight() const {
-    std::vector<int> weights;
-    for (int i = 0; i < vertexCount; i++) {
-        for (int j = 0; j < vertexCount; j++) {
+    // Collect all the weights into the array
+    for (int i = 0; i < vertexCount; ++i) {
+        for (int j = 0; j < vertexCount; ++j) {
             if (edges[i][j] != 0) {
-                weights.push_back(edges[i][j]);
+                weights[count++] = edges[i][j];
             }
         }
     }
-    if (weights.empty()) {
-        return 0; // or any other value indicating no edges
+
+    if (count == 0) {
+        return 0; // No edges in the graph
     }
-    std::sort(weights.begin(), weights.end());
-    int n = weights.size();
-    if (n % 2 == 0) {
-        return (weights[n / 2 - 1] + weights[n / 2]) / 2;
+
+    // Sort the weights array
+    for (int i = 0; i < count - 1; ++i) {
+        for (int j = 0; j < count - i - 1; ++j) {
+            if (weights[j] > weights[j + 1]) {
+                int temp = weights[j];
+                weights[j] = weights[j + 1];
+                weights[j + 1] = temp;
+            }
+        }
+    }
+
+    // Calculate the median
+    if (count % 2 == 0) {
+        return (weights[count / 2 - 1] + weights[count / 2]) / 2;
     } else {
-        return weights[n / 2];
+        return weights[count / 2];
     }
 }

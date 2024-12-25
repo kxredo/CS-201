@@ -11,8 +11,10 @@ DisjointSet::DisjointSet(int count) {
     this->count = count;
 
     for (int i = 2; i < count; i++) {
-        for (int j = 2 * i; j < count; j += i) {
+        for (int j = i + 1; j < count; j++) {
+            if(j%i==0){
             unionOfSets(i, j);
+            }
         }
     }
 }

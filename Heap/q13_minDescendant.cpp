@@ -1,3 +1,27 @@
+Given the index of a heap node in a max-heap, write a function that
+returns the minimum descendant of this node.
+HeapNode minDescendant(int index)
+
+
+
+HeapNode Heap::minDescendant(int index) {
+    if (index >= count){
+        return array[index]; // If the index is invalid, return the node itself
+    }
+
+    int minValue = array[index].getData();
+    int minIndex = index;
+
+    // Iterating over all descendants
+    for (int i = index + 1; i < count; ++i) {
+        if (array[i].getData() < minValue) {
+            minValue = array[i].getData();
+            minIndex = i;
+        }
+    }
+
+    return array[minIndex];
+}
 
 
 
@@ -34,3 +58,4 @@ HeapNode Heap::minDescendant(int index) {
     }
     return minNode;
 }
+

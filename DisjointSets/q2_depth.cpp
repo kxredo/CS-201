@@ -5,6 +5,11 @@
  level are 1, etc.
  int depth(int index)*/
 
- int DisjointSet::depth(int index) {
-    return sets[index].getDepth();
+int DisjointSet::depth(int index) {
+    int depth = 0;
+    while (sets[index].getParent() != index) {
+        index = sets[index].getParent();
+        depth++;
+    }
+    return depth;
 }

@@ -5,9 +5,10 @@ Given the index of a set S, write a method that unmerges (creates
  void unmerge(int index)
 
 void DisjointSet::unmerge(int index) {
-    for (int i = 0; i < this->count; ++i) {
+    for (int i = 0; i < count; ++i) {
         if (sets[i].getParent() == index && i != index) {
-            sets[i].setParent(i);
+            sets[i].setParent(i); // Make each child a root of its own set
         }
     }
+    sets[index].setParent(index); // Make the given index a root of its own set
 }

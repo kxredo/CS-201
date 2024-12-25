@@ -1,44 +1,31 @@
+A graph represents a ring topology if all the nodes create a circular
+ path. Each node is connected to two others, like points on a circle.
+ Write a class method in Graph class for adjacency list representation
+ which checks if the corresponding graph is circular or not.
+ boolean isCircular ()
 
-
-#include <vector>
-#include <queue>
-
-bool GraphList::isCircular() const {
-    if (vertexCount < 3) return false;
-
-    std::vector<int> degree(vertexCount, 0);
-    std::queue<int> q;
-
-    // Count degree of each vertex
+bool Graph::isCircular() {
+    if (vertexCount <= 1) return false;
+    
+    // Check if each vertex has exactly 2 neighbors
     for (int i = 0; i < vertexCount; i++) {
-        for (const auto& edge : adjList[i]) {
-            degree[i]++;
+        if (adjList[i].size() != 2) {
+            return false;
         }
     }
-
-    // Enqueue nodes with degree not equal to 2
-    for (int i = 0; i < vertexCount; i++) {
-        if (degree[i] != 2) {
-            q.push(i);
-        }
+    
+    // Follow the path starting from vertex 0
+    int current = 0;
+    int count = 1;
+    int next = adjList[0][0];  // Take first neighbor
+    
+    while (next != 0 && count < vertexCount) {
+        // Get the next vertex (the one that's not where we came from)
+        int temp = (adjList[next][0] == current) ? adjList[next][1] : adjList[next][0];
+        current = next;
+        next = temp;
+        count++;
     }
-
-    // Remove vertices with degree not equal to 2
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
-        for (const auto& edge : adjList[u]) {
-            int v = edge.to;
-            degree[v]--;
-            if (degree[v] == 0) return false;
-            if (degree[v] == 1) q.push(v);
-        }
-    }
-
-    // Check if all remaining vertices have degree 2
-    for (int i = 0; i < vertexCount; i++) {
-        if (degree[i] != 2) return false;
-    }
-
-    return true;
+    
+    return count == vertexCount && next == 0;
 }

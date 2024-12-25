@@ -17,42 +17,27 @@ bined,weget
  int combine(intN, int[] left, int[] right)
 
 
-int combine(int N, int[] left, int[] right) {
-    // Union-Find parent array
-    int[] parent = new int[N];
-    for (int i = 0; i < N; i++) {
-        parent[i] = i; // Initialize each variable as its own parent
+int DisjointSet::combine(int N, int* left, int* right) {
+    DisjointSet ds(N);
+
+    for (int i = 0; i < N; ++i) {
+        ds.unionOfSets(left[i], right[i]);
     }
 
-    // Find the representative of the set
-    int find(int x) {
-        if (parent[x] != x) {
-            parent[x] = find(parent[x]); // Path compression
-        }
-        return parent[x];
+    int* rootCount = new int[N]();
+    
+    for (int i = 0; i < N; ++i) {
+        int root = ds.findSetIterative(i);
+        rootCount[root]++;
     }
 
-    // Union two sets
-    void union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX != rootY) {
-            parent[rootX] = rootY; // Merge sets
+    int equalityCount = 0;
+    for (int i = 0; i < N; ++i) {
+        if (rootCount[i] > 0) {
+            equalityCount++;
         }
     }
 
-    // Process all equalities
-    for (int i = 0; i < left.length; i++) {
-        union(left[i], right[i]);
-    }
-
-    // Count unique components
-    int count = 0;
-    for (int i = 0; i < N; i++) {
-        if (find(i) == i) {
-            count++;
-        }
-    }
-
-    return count;
+    delete[] rootCount;
+    return equalityCount;
 }

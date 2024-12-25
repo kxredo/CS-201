@@ -1,4 +1,6 @@
-
+Write afunction that computes the number of paths between all vertices
+ in a graph.
+ int [][] pathCount()
 
 int** Graph::pathCount() {
     // Initialize path count matrix

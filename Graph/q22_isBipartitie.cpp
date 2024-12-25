@@ -1,32 +1,40 @@
+A bipartite graph is a graph such that vertices of the graph can be
+ partitioned into two subsets such that no edge has both its vertices
+ in the same subset. Write a method for adjacency list representation
+ which checks if the corresponding graph is bipartite or not. Hint: Use
+ Depth or breath first search to traverse the graph.
 
-
-#include <vector>
-#include <queue>
-
-bool GraphList::isBipartite() const {
-    std::vector<int> colors(vertexCount, -1);
-
-    for (int start = 0; start < vertexCount; start++) {
-        if (colors[start] == -1) {
-            std::queue<int> q;
-            q.push(start);
-            colors[start] = 0;
-
-            while (!q.empty()) {
-                int u = q.front();
-                q.pop();
-
-                for (const auto& edge : adjList[u]) {
-                    int v = edge.to;
-                    if (colors[v] == -1) {
-                        colors[v] = 1 - colors[u];
-                        q.push(v);
-                    } else if (colors[v] == colors[u]) {
-                        return false;
-                    }
-                }
+bool Graph::isBipartite() {
+    if (vertexCount == 0) return true;
+    
+    bool* visited = new bool[vertexCount];
+    int* colors = new int[vertexCount];
+    
+    // Initialize arrays
+    for (int i = 0; i < vertexCount; i++) {
+        visited[i] = false;
+        colors[i] = 0;
+    }
+    
+    // Color first vertex
+    colors[0] = 1;
+    visited[0] = true;
+    
+    // Use existing DFS to visit all nodes
+    depthFirstSearch(visited, 0);
+    
+    // Check if any adjacent vertices have same color
+    for (int i = 0; i < vertexCount; i++) {
+        for (int j = 0; j < vertexCount; j++) {
+            if (edges[i][j] > 0 && colors[i] == colors[j]) {
+                delete[] visited;
+                delete[] colors;
+                return false;
             }
         }
     }
+    
+    delete[] visited;
+    delete[] colors;
     return true;
 }

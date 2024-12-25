@@ -5,11 +5,12 @@ Given the index of a heap node, write a function that obtains the height
  int height(int index)*/
 
 int height(int index) {
+    
     int leftChild = 2 * index + 1;
     int rightChild = 2 * index + 2;
-    
+
     if (leftChild >= count && rightChild >= count) {
-        // If the node has no children, its height is 0.
+        // If the node has no children, its height is 0
         return 0;
     }
 
@@ -24,6 +25,14 @@ int height(int index) {
         rightHeight = height(rightChild);
     }
 
-    // The height of the node is 1 + the maximum height of its children.
-    return 1 + std::max(leftHeight, rightHeight);
+    // Height of the node is 1 + maximum height of its children
+    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
 }
+/* int maxHeight;
+    if (leftHeight > rightHeight) {
+        maxHeight = leftHeight;
+    } else {
+        maxHeight = rightHeight;
+    }
+    return 1 + maxHeight;
+    */

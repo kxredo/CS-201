@@ -1,28 +1,31 @@
 
 
-#include <vector>
 
-bool isCompleteMatrix(const std::vector<std::vector<int>>& matrix) {
-    int n = matrix.size();
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (i != j && matrix[i][j] == 0) {
-                return false;
+
+bool Graph::isComplete() const {
+        for (int i = 0; i < vertexCount; ++i) {
+            for (int j = 0; j < vertexCount; ++j) {
+                if (i != j && edges[i][j] == 0) {
+                    return false; // If there is any missing edge, the graph is not complete
+                }
             }
         }
+        return true; // All edges are present
     }
-    return true;
-}
 
 
-#include <vector>
 
-bool isCompleteList(const std::vector<std::vector<int>>& adjList) {
-    int n = adjList.size();
-    for (int i = 0; i < n; i++) {
-        if (adjList[i].size() != n - 1) {
-            return false;
+    bool Graph::isComplete() const {
+        for (int i = 0; i < vertexCount; ++i) {
+            int edgeCount = 0;
+            Edge* edge = edges[i].getHead();
+            while (edge != nullptr) {
+                edgeCount++;
+                edge = edge->getNext();
+            }
+            if (edgeCount != vertexCount - 1) {
+                return false; // If the vertex does not have the correct number of edges
+            }
         }
+        return true; // All vertices have the correct number of edges
     }
-    return true;
-}

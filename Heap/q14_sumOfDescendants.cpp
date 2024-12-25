@@ -1,4 +1,6 @@
-
+Given the index of a heap node in a max-heap, write a recursive function
+that returns the sum of all descendants of this node.
+double sumOfDescendants(int index)
 
 
 double Heap::sumOfDescendants(int index) {

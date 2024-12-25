@@ -1,19 +1,23 @@
+Given the index of a heap node in a max-heap, write a method that
+determines if the subtree rooted from the node with index satisfies the
+heap-order property. Do not use any class or external methods.
+boolan heapOrder(int index)
 
+bool Heap::heapOrder(int index) {
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
 
-bool heapOrder(int index, int* heap, int count) {
-    int leftChild = 2 * index + 1;
-    int rightChild = 2 * index + 2;
-
-    // Check left child
-    if (leftChild < count) {
-        if (heap[index] < heap[leftChild] || !heapOrder(leftChild, heap, count)) {
+// if leftChild is in heap size
+// if index value < leftChild value
+// return false
+    if (left < count) {
+        if (array[index].getData() < array[left].getData() || !heapOrder(left)) {
             return false;
         }
     }
 
-    // Check right child
-    if (rightChild < count) {
-        if (heap[index] < heap[rightChild] || !heapOrder(rightChild, heap, count)) {
+    if (right < count) {
+        if (array[index].getData() < array[right].getData() || !heapOrder(right)) {
             return false;
         }
     }
