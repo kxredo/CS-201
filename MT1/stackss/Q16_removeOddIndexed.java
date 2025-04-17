@@ -2,22 +2,22 @@ package stackss;
 
 public class Q16_removeOddIndexed {
 
-    void removeOddIndexed() {
-        Stack tempStack = new Stack<>();
-        int index = 1;
+    public void removeOddIndexed() {
+        Stack<Integer> tempStack = new Stack<>();
+        int index = 0;
 
-        // Transfer elements to the temp stack, skipping odd-indexed elements
+        // Pop all elements from the original stack and push them onto the temp stack
         while (!isEmpty()) {
-            int top = pop();
-            if (index % 2 == 0) {  // Push only even-indexed elements
-                tempStack.push(top);
-            }
-            index++;
+            tempStack.push(pop());
         }
 
-        // Transfer elements back to the original stack to preserve the order
+        // Push elements back to the original stack, skipping odd indices
         while (!tempStack.isEmpty()) {
-            push(tempStack.pop());
+            int value = tempStack.pop();
+            if (index % 2 == 0) {
+                push(value);
+            }
+            index++;
         }
     }
 

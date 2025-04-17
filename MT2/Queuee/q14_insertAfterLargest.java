@@ -10,7 +10,6 @@ Write a function that inserts a new element after the largest element
  void insertAfterLargest (int data)
      */
     public void insertAfterLargest(int data) {
-
         int largestIndex = first;
         int largestValue = array[first].getData();
 
@@ -21,7 +20,6 @@ Write a function that inserts a new element after the largest element
                 largestIndex = i;
             }
         }
-
         // Calculate the index after the largest element
         int insertIndex = (largestIndex + 1) % N;
 
@@ -29,7 +27,6 @@ Write a function that inserts a new element after the largest element
         for (int i = last; i != insertIndex; i = (i - 1 + N) % N) {
             array[i] = array[(i - 1 + N) % N];
         }
-
         // Insert the new element
         array[insertIndex] = new Element(data);
 

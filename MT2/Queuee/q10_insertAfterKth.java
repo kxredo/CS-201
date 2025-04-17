@@ -3,10 +3,17 @@ package Queuee;
 import org.w3c.dom.Node;
 
 import stackss.Element;
+/*
+Write a function that adds a new element after the K’th (K ≥ 0)
+ element of the queue. Write the function for both array and linked
+ list implementations. You can safely assume that, there are at least K
+ elements in the queue.
+  void insertAfterKth ()
+ */
 
 public class q10_insertAfterKth {
 
-    public void insertAfterKth(Element newElement, int k) {
+    public void insertAfterKth() {
         // Calculate the index where the new element will be inserted
         int insertIndex = (first + k + 1) % N;
 

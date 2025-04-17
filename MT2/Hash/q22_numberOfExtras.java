@@ -1,4 +1,6 @@
 
+import javax.swing.text.TableView;
+
 public class q22_numberOfExtras {
 
     /*
@@ -16,25 +18,13 @@ Write a static method in Hash class
 // value = array[i]
 // use hashing (int index = hashFunction(value))
     public static int numberOfExtras(int[] array) {
-        
-        Hash hashTable = new Hash(array.length);
-        int extras = 0;
-
-        for (int i = 0; i < array.length; i++) {
-            int value = array[i];
-            int index = hashTable.hashFunction(value);
-            while (hashTable.table[index] != null) {
-                if (hashTable.table[index].key == value) {
-                    extras++;
-                    break;
-                }
-                index = (index + 1) % hashTable.table.length;
-            }
-            if (hashTable.table[index] == null) {
-                hashTable.table[index] = new Element(value);
+        int count = 0;
+        for (int i = 0; i < N; i++) {
+            if (table[i] == null && table[i + 1] % N != null) {
+                count++;
             }
         }
-        return extras;
+        return count;
     }
 
 }

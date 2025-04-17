@@ -13,10 +13,8 @@ Write a function that will delete the odd indexed elements from a singly
  LinkedList oddIndexedElements()
      */
     public LinkedList oddIndexedElements() {
+        
         LinkedList oddList = new LinkedList();
-        if (head == null) {
-            return oddList;
-        }
 
         Node current = head;
         Node prev = null;

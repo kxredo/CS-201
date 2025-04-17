@@ -1,29 +1,53 @@
 package Queuee;
-// THIS QUESTION WILL NOT COME 
 import java.util.Queue;
 
+/*
+Write the method for array implementation
+ void copyPaste(Queue src, int index)
+ which copies all the elements of the src queue and inserts to the queue at
+ position index. You are not allowed to use enqueue, dequeue, isEmpty
+ functions. You can assume the destination queue has enough space
+ for insertion. Your method should run in O(N) time. Hint: Start by
+ counting the number of positions to shift for opening up space for the
+ elements of src.
+ */
 public class q18_copyPaste {
 
     public void copyPaste(Queue src, int index) {
-        if (index < 1 || index > size + 1) {
-            throw new IllegalArgumentException("Invalid index");
+        int srcSize = src.size;             // Size of the source queue
+        int[] srcArray = src.array;         // Array of the source queue
+    
+        // Step 1: Shift elements in the destination queue to create space for src
+        for (int i = size - 1; i >= index; i--) {
+            array[i + srcSize] = array[i];
         }
-
-        // Calculate the number of positions to shift elements to the right
-        int shift = src.size();
-
-        // Shift elements to the right, starting from the last element
-        for (int i = last - 1; i >= (first + index - 1) % N; i--) {
-            array[i + shift] = array[i];
+    
+        // Step 2: Copy elements from src to the destination at the specified index
+        for (int i = 0; i < srcSize; i++) {
+            array[index + i] = srcArray[i];
         }
+    
+        // Step 3: Update the size of the destination queue
+        size = size + srcSize;
+    }
 
-        // Copy elements from the source queue
-        int srcIndex = 0;
-        for (int i = (first + index - 1) % N; i < (first + index + src.size() - 1) % N; i++) {
-            array[i] = src.array[srcIndex++];
+    // Linked List
+    public void copyPaste(Queue src, int index) {
+        Node current = head; // Head of the destination queue
+        Node srcHead = src.head;      // Head of the source queue
+        Node srcTail = src.tail;      // Tail of the source queue
+        int srcSize = src.size;       // Size of the source queue
+    
+            // Traverse to the node before the index
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            // Connect src queue to destination queue
+            srcTail.next = current.next;
+            current.next = srcHead;
         }
-
-        last = (last + shift) % N;
-        size += src.size();
+    
+        // Update size of the destination queue
+        size += srcSize;
     }
 }

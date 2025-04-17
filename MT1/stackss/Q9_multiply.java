@@ -12,14 +12,14 @@ Write a function which pops the last two items of a stack and returns
  implementations.
  int multiply()
  */
-public class multiplyQ9 {
+public class Q9_multiply {
     
         public int multiplyArr() {
             
-                int last = arr[top];
-                int secondLast = arr[top - 1];
+                int a = arr[top];
+                int b = arr[top - 1];
                 top -= 2; // Manually adjusting the top pointer
-                return last * secondLast;
+                return a * b;
             }
         }
     
@@ -27,19 +27,10 @@ public class multiplyQ9 {
     
     public int multiplyLL() {
         
-            int last = top.data;
-            Node temp = top;
-            top = top.next;
-            temp.next = null; // Disconnect the node
-            temp = null; // Help GC
-
-            int secondLast = top.data;
-            temp = top;
-            top = top.next;
-            temp.next = null; // Disconnect the node
-            temp = null; // Help GC
-
-            return last * secondLast;
+        int a = top.data;
+        int b = top.next.data;
+        top = top.next.next; // Move top pointer to effectively "pop" the two elements
+        return a * b;
         }
     }
 

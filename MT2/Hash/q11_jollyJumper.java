@@ -12,14 +12,10 @@ A sequence of n > 0 integers is called a jolly jumper if the absolute
 
     public boolean jollyJumper(int[] sequence) {
         int n = sequence.length;
-
-        if (n == 1) {
-            return true;
-        }
         boolean[] diffs = new boolean[n - 1];
 
-        for (int i = 1; i < n; i++) {
-            int diff = Math.abs(sequence[i] - sequence[i - 1]);
+        for (int i = 0; i < n; i++) {
+            int diff = Math.abs(sequence[i] - sequence[i + 1]);
             if (diff >= 1 && diff < n) {
                 diffs[diff - 1] = true;
             } else {

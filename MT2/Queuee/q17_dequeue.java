@@ -6,45 +6,37 @@ public class q17_dequeue {
 
     // Array Implementation
     public Element dequeue(int k) {
-        if (k < 1 || k > size) {
-            throw new IllegalArgumentException("Invalid index k");
+
+        // Get the element to be dequeued
+        Element dequeuedElement = array[front + k - 1];
+
+        // Shift all elements after the k-th element to the left
+        for (int i = front + k - 1; i < front + size - 1; i++) {
+            array[i] = array[i + 1];
         }
 
-        Element element = array[(first + k - 1) % N];
-
-        // Shift elements to the left, starting from the (k+1)-th position
-        for (int i = (first + k) % N; i <= last; i++) {
-            array[(i - 1) % N] = array[i % N];
-        }
-
-        last = (last - 1) % N;
+        // Update the size
         size--;
 
-        return element;
+        return dequeuedElement;
     }
 
     // Linked List Implementation
     public Node dequeue(int k) {
-        if (k < 1 || k > size) {
-            throw new IllegalArgumentException("Invalid index k");
-        }
+        Node dequeuedNode;
 
-        Node current = first;
-        Node prev = null;
-
-        for (int i = 0; i < k - 1; i++) {
-            prev = current;
+        // Traverse to the (k-1)-th node
+        Node current = head;
+        for (int i = 1; i < k - 1; i++) {
             current = current.next;
         }
-
-        Node removedNode = current;
-        if (prev == null) {
-            first = current.next;
-        } else {
-            prev.next = current.next;
-        }
-
-        size--;
-        return removedNode;
+        // Remove the k-th node
+        dequeuedNode = current.next;
+        current.next = current.next.next;
     }
+    // Update size
+    size--;
+    
+    return dequeuedNode ;
+}
 }

@@ -1,4 +1,5 @@
 
+import java.lang.reflect.Array;
 import java.util.Hashtable;
 
 /*
@@ -12,19 +13,19 @@ Write a static method that takes an array of integers as a parameter
 public class q18_anyDuplicate {
 
     public static boolean anyDuplicate(int[] array) {
-        Hashtable hashTable = new Hashtable(array.length);
+        Hash hash = new Hash(array.length);
 
         for (int i = 0; i < array.length; i++) {
-            int index = hashTable.hashFunction(array[i]);
+            int index = hash.hashFunction(array[i]);
 
-            while (hashTable.table[index] != null) {
-                if (hashTable.table[index].key == array[i]) {
+            while (hash.table[index] != null) {
+                if (hash.table[index].key == array[i]) {
                     return true; // Duplicate found
                 }
-                index = (index + 1) % hashTable.length; // Linear probing
+                index = (index + 1) % hash.length; // Linear probing
             }
 
-            hashTable.table[index] = new Element(array[i]);
+            hash.table[index] = new Element(array[i]);
         }
 
         return false;

@@ -12,26 +12,27 @@ Write a method that simplifies a hash table by creating a new hash
  Hash simplify()
      */
     public Hash simplify() {
-        Hash newTable = new Hash(table.length);
+        Hash hash = new Hash(table.length);
+        int count = 0;
+
         for (int i = 0; i < table.length; i++) {
             if (table[i] != null) {
-                int count = 0;
                 int index = hashFunction(table[i].key);
 
-                while (newTable.table[index] != null) {
-                    if (newTable.table[index].key == table[i].key) {
+                while (hash.table[index] != null) {
+                    if (hash.table[index].key == table[i].key) {
                         count++;
                         break;
                     }
-                    index = (index + 1) % newTable.table.length;
+                    index = (index + 1) % hash.table.length;
                 }
 
                 if (count == 0) {
-                    newTable.table[index] = new Element(table[i].key);
+                    hash.table[index] = new Element(table[i].key);
                 }
             }
         }
-        return newTable;
+        return hash;
     }
 
 }

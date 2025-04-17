@@ -12,7 +12,7 @@ Write a function that returns the maximum element in a queue. You are
  int largest ()
      */
     public int largest() {
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         int size = (last - first + N) % N;
         for (int i = 0; i < size; i++) {
             Element temp = dequeue();

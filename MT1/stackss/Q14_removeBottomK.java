@@ -1,4 +1,7 @@
-
+/*Write a function which removes only the K bottom elements of the
+ stack.
+ void removeBottomK(int K)
+ */
 public class Q14_removeBottomK {
     public void removeBottomK(int k) {
         

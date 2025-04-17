@@ -1,15 +1,16 @@
 package Queuee;
 
 public class q2_enlarge {
-    public void enlarge() {
-        int[] newQueue = new int[queue.length * 2];
-        int index = 0;
-        for (int i = front; i < front + size; i++) {
-            newQueue[index++] = queue[i % queue.length];
+    private void enlarge() {
+        int newCapacity = capacity * 2;
+        int[] newQueue = new int[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newQueue[i] = queue[(front + i) % capacity];
         }
         queue = newQueue;
         front = 0;
         rear = size - 1;
+        capacity = newCapacity;
     }
     
 }

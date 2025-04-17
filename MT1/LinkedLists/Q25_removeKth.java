@@ -7,9 +7,7 @@ Write a method which deletes K’th node from a doubly linked list.
 void removeKth(int K)
      */
     void removeKth(int K) {
-        if (head == null || K <= 0) {
-            return; // If the list is empty or K is invalid
-        }
+        
 
         DoubleNode current = head;
         int count = 1;

@@ -8,20 +8,14 @@ For array representation, write a function that enlarges the stack when
  stack.
  void enlarge()
      */
-    private void enlarge() {
-        // Double the capacity
+    public void enlarge() {
         int newCapacity = capacity * 2;
-        // Create a new array with the larger capacity
         int[] newStack = new int[newCapacity];
-        // Copy elements from the old stack to the new one
-        for (int i = 0; i <= top; i++) {
+        for (int i = 0; i < capacity; i++) {
             newStack[i] = stack[i];
         }
-        // Replace the old stack with the new one
         stack = newStack;
-        // Update the capacity
         capacity = newCapacity;
-    
-}
+    }
     
 }

@@ -4,23 +4,21 @@ import java.util.Stack;
 
 public class Q5_palindrome {
 
-    public static boolean isPalindrome(String s) {
+    public static boolean palindrom(String s) {
         Stack<Character> stack = new Stack<>();
-          
-        // Push characters onto the stack
+        
+        // Push all characters of the string onto the stack
         for (char c : s.toCharArray()) {
             stack.push(c);
         }
-
-        // Compare characters from the original string with popped characters from the stack
-        int i = 0;
-        while (!stack.isEmpty()) {
-            if (s.charAt(i) != stack.pop()) {
+        
+        // Pop characters from the stack and check against the original string
+        for (char c : s.toCharArray()) {
+            if (c != stack.pop()) {
                 return false;
             }
-            i++;
         }
-
+        
         return true;
     }
     

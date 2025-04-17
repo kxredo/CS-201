@@ -19,7 +19,7 @@ public class q7_maximum {
 
             // Traverse the linked list in the current bucket
             while (current != null) {
-                if (max == null || current.data > max.data) {
+                if (current.data > max.data) {
                     max = current; // Update maxNode if current node is larger
                 }
                 current = current.next;

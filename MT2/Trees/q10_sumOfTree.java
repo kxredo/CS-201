@@ -7,9 +7,6 @@ Write a function that computes the sum of all keys in a binary search tree.
 int sumOfTree()
      */
     int sumOfTree2() {
-        if (this == null) {
-            return 0;
-        }
         int sum = key;
         if (left != null) {
             sum += left.sumOfTree();

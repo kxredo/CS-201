@@ -1,6 +1,5 @@
 
 public class q20_numberOfClusters {
-// WILL NOT BE IN EXAM
     public int numberOfClusters() {
         int clusters = 0;
         boolean inCluster = false; // Flag to track if we are inside a cluster

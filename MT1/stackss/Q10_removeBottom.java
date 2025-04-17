@@ -7,32 +7,21 @@ public class Q10_removeBottom {
 
 
     public void removeBottom() {
-        // If stack is empty or has only one element
-        if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+        int[] tempStack = new int[capacity];
+        int tempTop = -1;
+
+        // Pop elements and store them in a temporary stack
+        for (int i = 0; i < top - K + 1; i++) {
+            tempStack[++tempTop] = stack[i];
         }
-        if (top.next == null) {
-            // Only one element, simply remove it
-            top = null;
-            return;
+
+        // Restore the remaining elements back to the original stack
+        for (int i = 0; i <= tempTop; i++) {
+            stack[i] = tempStack[i];
         }
-        
-        // Temporary stack to store elements
-        Stack tempStack = new Stack();
-        
-        // Pop all elements except the last one and store them in temp stack
-        while (top.next != null) {
-            tempStack.push(pop());
-        }
-        
-        // At this point, top points to the bottom element
-        // Remove it by setting top to null
-        top = null;
-        
-        // Restore all elements from temp stack to original stack
-        while (!tempStack.isEmpty()) {
-            push(tempStack.pop());
-        }
+
+        // Update the top pointer
+        top = tempTop;
     }
 
 }

@@ -10,6 +10,8 @@ Write a function that moves the element currently at the front of the
  queue to the rear of the queue. Write the function for both array and
  linked list implementations.
  void moveToRear()
+ Front → [A, B, C, D] ← Rear
+
      */
     // Array-Based Queue Implementation
     public void moveToRear() {
@@ -29,9 +31,7 @@ Write a function that moves the element currently at the front of the
 
 // Linked List implementation
     public void moveToRear() {
-        if (isEmpty()) {
-            return; // Queue is empty
-        }
+        while(!isEmpty())
 
         Node temp = first;
         first = first.next;

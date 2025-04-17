@@ -10,21 +10,21 @@ Write a function which double each item in the stack, that is, each item
  void doubleStack()
  */
     void doubleStack() {
-        Stack<Integer> tempStack = new Stack<>();
+        int[] tempStack = new int[capacity];
+        int tempTop = -1;
 
-        // Step 1: Pop each element and push it twice to the temporary stack
-        while (!isEmpty()) {
-            int top = pop();
-            tempStack.push(top);
-            tempStack.push(top); // Push the element twice
+        // Copy elements to temp stack
+        for (int i = 0; i <= top; i++) {
+            tempStack[++tempTop] = stack[i];
         }
 
-        // Step 2: Push all elements back to the original stack
-        while (!tempStack.isEmpty()) {
-            push(tempStack.pop());
+        // Double elements in the original stack
+        for (int i = 0; i <= tempTop; i++) {
+            stack[i * 2] = tempStack[i];
+            stack[i * 2 + 1] = tempStack[i];
         }
+
+        // Update top pointer
+        top = tempTop * 2 + 1;
     }
-
-    
-
 }

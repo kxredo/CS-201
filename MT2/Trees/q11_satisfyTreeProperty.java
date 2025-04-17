@@ -2,38 +2,19 @@ package Trees;
 
 public class q11_satisfyTreeProperty {
 
-    boolean satisfyTreeProperty2(int min, int max) {
-        if (left == null && right == null) {
-            return val > min && val < max;
-        }
-        if (left != null && (left.val >= val || !left.satisfyTreeProperty2(min, val))) {
-            return false;
-        }
-        if (right != null && (right.val <= val || !right.satisfyTreeProperty2(val, max))) {
-            return false;
-        }
-        return val > min && val < max;
+    public boolean satisfyTreeProperty(TreeNode root) {
+        return satisfyTreeProperty(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-
-    boolean satisfyTreeProperty() {
-        if (root != null) {
-            return root.satisfyTreeProperty2(Integer.MIN_VALUE, Integer.MAX_VALUE);
-        } else {
+    
+    private boolean satisfyTreeProperty(TreeNode node, int min, int max) {
+        if (node == null) {
             return true;
         }
+        // Check if the current node's value is within the valid range
+        if (node.val <= min || node.val >= max) {
+            return false;
+        }
+        // Recursively check the left and right subtrees
+        return satisfyTreeProperty(node.left, min, node.val) && satisfyTreeProperty(node.right, node.val, max);
     }
-// -----------------------------------------------------------------------------------------------------------------------
-    boolean satisfyTreeProperty() {
-        return checkProperty(Integer.MIN_VALUE, Integer.MAX_VALUE);
-    }
-    
-    boolean checkProperty(int min, int max) {
-        if (this == null) return true;
-        if (key <= min || key >= max) return false;
-        boolean leftValid = left == null || left.checkProperty(min, key);
-        boolean rightValid = right == null || right.checkProperty(key, max);
-        return leftValid && rightValid;
-    }
-    
-
 }
