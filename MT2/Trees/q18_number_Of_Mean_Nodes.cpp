@@ -27,9 +27,4 @@ int number_of_mean_nodes(TreeNode
     return count;
 }
 
-int numberOfMeanNodes(TreeNode
-                          *root)
-{
-    return number_of_mean_nodes(root);
-}
 }

@@ -1,4 +1,6 @@
 
+import javax.swing.text.TableView;
+
 public class q12_between {
 
     /*
@@ -14,9 +16,8 @@ Write a function which returns the number of items in the hash table
         // Iterate through the entire table to check each element
         for (int i = 0; i < table.length; i++) {
             if (table[i] != null) {
-                int value = table[i].data;
                 // Check if the element is between X and Y (inclusive)
-                if (value >= X && value <= Y) {
+                if (table[i].data >= X && table[i].data <= Y) {
                     count++;
                 }
             }
@@ -24,5 +25,4 @@ Write a function which returns the number of items in the hash table
 
         return count;
     }
-
 }

@@ -17,12 +17,4 @@ int sumOfTree()
         return sum;
     }
 
-    int sumOfTree() {
-        if (root != null) {
-            return root.sumOfTree2();
-        } else {
-            return 0;
-        }
-    }
-
 }

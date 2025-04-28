@@ -14,7 +14,6 @@ Write function that finds the number of empty slots in an hash table
                 count++;
             }
         }
-
         return count;
     }
 

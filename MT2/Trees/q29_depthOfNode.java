@@ -10,7 +10,7 @@ Write a non-recursive method in Tree class that returns the depth of
  */
     int depthOfNode(int X) {
         int depth = 0;
-        TreeNode current = this;  // Start from the root node
+        TreeNode current = root;  // Start from the root node
 
         // Traverse the tree iteratively
         while (current != null) {
@@ -23,9 +23,6 @@ Write a non-recursive method in Tree class that returns the depth of
             }
             depth++;  // Increment depth as we move down the tree
         }
-
-        // If the node with value X is not found, return -1
-        return -1;
     }
 
 }

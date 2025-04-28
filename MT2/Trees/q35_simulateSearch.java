@@ -3,7 +3,7 @@ package Trees;
 import java.util.Random;
 
 public class q35_simulateSearch {
-// WILL NOT BE IN EXAM
+
 /*
 Write a non-recursive method
  double simulateSearch(int N)

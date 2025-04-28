@@ -14,10 +14,10 @@ Write a function that swaps left and right children of all nodes in a
         right = temp;
 
         if (left != null) {
-            left.swapChildren2();
+            left.swapChildren();
         }
         if (right != null) {
-            right.swapChildren2();
+            right.swapChildren();
         }
     }
 

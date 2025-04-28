@@ -1,7 +1,12 @@
 
 import java.util.LinkedList;
 
-import org.w3c.dom.Node;
+/*
+Write the method
+ boolean perfectMap()
+ that returns true if the hash table contains one node at maximum per
+ linked list in separate chaining, otherwise it returns false.
+ */
 
 public class q21_perfectMap {
     for(int i = 0; i < N; i++){

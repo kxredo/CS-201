@@ -1,4 +1,9 @@
-
+/*
+Write the method
+ int numberOfClusters()
+ that finds the number of clusters in hash table. A cluster is a contiguous
+ group of non-null elements in the array.
+ */
 public class q20_numberOfClusters {
     public int numberOfClusters() {
         int clusters = 0;
