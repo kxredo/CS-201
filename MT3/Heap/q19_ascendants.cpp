@@ -10,21 +10,20 @@ int* MaxHeap::ascendants(int index) {
     // Calculate the number of ascendants
     int count = 0;
     int temp = index;
+    
     while (temp > 0) {
-        temp = (temp - 1) / 2;
+        temp = (temp - 1) / 2; // get parent index
         count++;
     }
-
-    // Allocate memory for the ascendants array
     int* result = new int[count];
-
-    // Fill the ascendants array
     temp = index;
-    count = 0;
-    while(temp>0)
-        temp = (temp - 1) / 2;
+    int i = 0;
+    while (i < count) {
+        temp = (temp - 1) / 2; // get parent index
         result[i] = temp;
+        i++;
     }
-
     return result;
 }
+
+

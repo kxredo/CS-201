@@ -31,3 +31,4 @@ int* DisJointSet::numberOfDescendants(int index) {
     }
     return result;
 }
+

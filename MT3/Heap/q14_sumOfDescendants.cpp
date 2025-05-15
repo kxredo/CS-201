@@ -1,7 +1,7 @@
-Given the index of a heap node in a max-heap, write a recursive function
+/*Given the index of a heap node in a max-heap, write a recursive function
 that returns the sum of all descendants of this node.
 double sumOfDescendants(int index)
-
+*/
 
 double Heap::sumOfDescendants(int index) {
     double sum = 0.0;
@@ -19,12 +19,4 @@ double Heap::sumOfDescendants(int index) {
     }
 
     return sum;
-}
-
-double Heap::sumOfAscendants(int index) {
-
-    int parent = (index - 1) / 2; // Calculate the parent's index
-
-    // Add the parent's value and recursively sum its ascendants
-    return array[parent].getData() + sumOfAscendants(parent);
 }

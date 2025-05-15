@@ -3,6 +3,7 @@ The reverse of a directed graph is another directed graph on the same
  the reverse of a graph in adjacency matrix representation.
  Graph reverseGraph()
 
+// Matrix
 Graph Graph::reverseGraph() {
     Graph reversedGraph = new Graph(vertexCount);
     for (int i = 0; i < vertexCount; ++i) {

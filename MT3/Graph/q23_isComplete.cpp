@@ -1,5 +1,7 @@
-
-
+Write a method that checks if the graph is complete or not. Write the
+ function for both adjacency matrix and adjacency list representations.
+ Do not use any class or external methods.
+ boolean isComplete()
 
 
 bool Graph::isComplete() const {

@@ -6,12 +6,7 @@ indexList , int N)
  that the resulting merged set will have the minimum depth. Use an
  algorithm that sorts the sets according to their depths.
 
-#include <algorithm> // For std::sort
 
-struct SetDepth {
-    int index;
-    int depth;
-};
 
 void DisjointSet::unionOfSets(int* indexList, int N) {
     // Create an array of SetDepth to store indexes and their depths

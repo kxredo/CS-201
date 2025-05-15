@@ -7,11 +7,11 @@ LinkedList Graph::incomingNodes(int i) {
     for (int j = 0; j < vertexCount; ++j) {
         Edge* edge = edges[j].getHead();
         while (edge != nullptr) {
-            if (edge->getTo() == j) {
+            if (edge->getTo() == i) {
                 incoming->insert(j);
             }
             edge = edge->getNext();
         }
-    }
+    } 
     return incoming;
 }

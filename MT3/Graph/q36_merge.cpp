@@ -5,12 +5,9 @@ Write the method in linked list implementation of Graph class
  edge exists in both graphs, add the resulting edge with the sum of their
  weights. You are not allowed to use any linked list methods.
 
- namespace list {
 
     Graph Graph::merge(const Graph& g2, int v) {
         Graph result = new Graph(vertexCount);
-
-        // Add edges from the original graph
         for (int i = 0; i < v; ++i) {
             Edge* edge = edges[i].getHead();
             while (edge != nullptr) {
@@ -18,16 +15,12 @@ Write the method in linked list implementation of Graph class
                 edge = edge->getNext();
             }
         }
-
-        // Add edges from g2 and sum the weights if the edge already exists
         for (int i = 0; i < v; ++i) {
             Edge* edge = g2.edges[i].getHead();
             while (edge != nullptr) {
                 int from = i;
                 int to = edge->getTo();
                 int weight = edge->getWeight();
-                
-                // Check if the edge already exists in the result graph
                 Edge* existingEdge = result.edges[from].search(to);
                 if (existingEdge != nullptr) {
                     existingEdge->setWeight(existingEdge->getWeight() + weight);
@@ -37,8 +30,5 @@ Write the method in linked list implementation of Graph class
                 edge = edge->getNext();
             }
         }
-
         return result;
     }
-
-}

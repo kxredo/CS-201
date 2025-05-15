@@ -12,9 +12,6 @@ int Graph::minimumWeight() {
             }
         }
     }
-    if (minWeight == INT_MAX) {
-        return -1;
-    }
     return minWeight;
 }
 
@@ -28,9 +25,6 @@ int Graph::minimumWeight() const {
             }
             edge = edge->getNext();
         }
-    }
-    if (minWeight == INT_MAX) {
-        return -1;
     }
     return minWeight;
 }

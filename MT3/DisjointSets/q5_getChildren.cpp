@@ -5,7 +5,7 @@ Given the index of a set, write a function that returns the indexes of
 
 LinkedList DisjointSet::getChildren(int index) {
     LinkedList children;
-    for (int i = 0; i < this->count; ++i) {
+    for (int i = 0; i < count; ++i) {
         if (i != index && sets[i].getParent() == index) {
             children.add(i);
         }

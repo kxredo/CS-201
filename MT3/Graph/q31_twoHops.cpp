@@ -7,9 +7,6 @@ Write the method in linkedlist implementation
  a node j, then j must appear that many times in the list(no need to
  sort or check for duplicates).
 
- #include <cstdlib>
-
-namespace list {
 
     int* Graph::twoHops(int index, int& size) {
         int* tempResult = new int[vertexCount * vertexCount]; // Temporary array to store results
@@ -17,8 +14,8 @@ namespace list {
         
         Edge* firstHop = edges[index].getHead();
         while (firstHop != nullptr) {
-            int intermediateNode = firstHop->getTo();
-            Edge* secondHop = edges[intermediateNode].getHead();
+            int midNode = firstHop->getTo();
+            Edge* secondHop = edges[midNode].getHead();
             while (secondHop != nullptr) {
                 tempResult[size++] = secondHop->getTo();
                 secondHop = secondHop->getNext();
@@ -30,9 +27,5 @@ namespace list {
         for (int i = 0; i < size; ++i) {
             result[i] = tempResult[i];
         }
-        
-        delete[] tempResult; // Clean up temporary array
         return result;
     }
-
-}

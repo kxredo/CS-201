@@ -2,11 +2,10 @@ Write a function that finds the median weight in a weighted graph.
  Write the function for adjacency matrix representation.
  int medianWeight()
  
-int Graph::medianWeight() const {
+int medianWeight() const {
     int weights[vertexCount * vertexCount]; // Assuming this is large enough
     int count = 0;
 
-    // Collect all the weights into the array
     for (int i = 0; i < vertexCount; ++i) {
         for (int j = 0; j < vertexCount; ++j) {
             if (edges[i][j] != 0) {
@@ -14,11 +13,6 @@ int Graph::medianWeight() const {
             }
         }
     }
-
-    if (count == 0) {
-        return 0; // No edges in the graph
-    }
-
     // Sort the weights array
     for (int i = 0; i < count - 1; ++i) {
         for (int j = 0; j < count - i - 1; ++j) {
@@ -29,8 +23,6 @@ int Graph::medianWeight() const {
             }
         }
     }
-
-    // Calculate the median
     if (count % 2 == 0) {
         return (weights[count / 2 - 1] + weights[count / 2]) / 2;
     } else {

@@ -4,33 +4,30 @@ A graph represents a ring topology if all the nodes create a circular
  which checks if the corresponding graph is circular or not.
  boolean isCircular ()
 
-bool Graph::isCircular() {
-    if (vertexCount <= 1) return false;
+ public boolean isCircular() {
+    if (vertexCount == 0) return false;
+    int[] inDegree = new int[vertexCount];
+    int[] outDegree = new int[vertexCount];
     
-    // Check if each vertex has exactly 2 neighbors
+    // Count degrees
     for (int i = 0; i < vertexCount; i++) {
-        if (adjList[i].size() != 2) {
-            return false;
+        Edge edge = edges[i].getHead();
+        while (edge != null) {
+            outDegree[i]++;
+            inDegree[edge.getTo()]++;
+            edge = edge.getNext();
         }
     }
-    
-    // Follow the path starting from vertex 0
-    int current = 0;
-    int count = 1;
-    int next = adjList[0][0];  // Take first neighbor
-    
-    while (next != 0 && count < vertexCount) {
-        // Get the next vertex (the one that's not where we came from)
-        int temp;
-    if (adjList[next][0] == current) {
-        temp = adjList[next][1];
-    } else {
-        temp = adjList[next][0];
+    for (int i = 0; i < vertexCount; i++) {
+        if (inDegree[i] != 1 || outDegree[i] != 1) return false;
     }
-        current = next;
-        next = temp;
+    boolean[] visited = new boolean[vertexCount];
+    int current = 0, count = 0;
+    
+    while (!visited[current] && count < vertexCount) {
+        visited[current] = true;
         count++;
+        current = edges[current].getHead().getTo();
     }
-    
-    return count == vertexCount && next == 0;
+    return count == vertexCount && current == 0;
 }

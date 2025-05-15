@@ -1,7 +1,7 @@
-Write a function that returns the index of the maximum valued grand
+/*Write a function that returns the index of the maximum valued grand
 child (children of children) of a heap node given its index.
  int maxGrandChild(int no)
-
+*/
 int maxGrandChild(int no) {
     int maxIndex = 4 * no + 3; // Initialize to the first grandchild index
     int maxValue = array[maxIndex].getData();

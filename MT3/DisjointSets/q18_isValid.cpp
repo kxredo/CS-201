@@ -10,7 +10,6 @@ bool DisjointSet::isValid() {
         int current = i;
         while (true) {
             if (visited[current]) {
-                delete[] visited;
                 return false; // Detected circularity
             }
             visited[current] = true;
@@ -20,7 +19,6 @@ bool DisjointSet::isValid() {
             }
             current = parent;
         }
-        delete[] visited;
     }
     return true;
 }

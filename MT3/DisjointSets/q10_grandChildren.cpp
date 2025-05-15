@@ -5,9 +5,9 @@ Given the index of a set, write a method that returns the indexes of
 
  LinkedList DisjointSet::grandChildren(int index) {
     LinkedList grandChildrenList;
-    for (int i = 0; i < this->count; ++i) {
+    for (int i = 0; i < count; ++i) {
         if (sets[i].getParent() == index) {
-            for (int j = 0; j < this->count; ++j) {
+            for (int j = 0; j < count; ++j) {
                 if (sets[j].getParent() == i) {
                     grandChildrenList.insertFirst(new Node(j));
                 }

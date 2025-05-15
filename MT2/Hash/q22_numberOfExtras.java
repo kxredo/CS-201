@@ -17,6 +17,8 @@ Write a static method in Hash class
 // N is size of array
 // value = array[i]
 // use hashing (int index = hashFunction(value))
+
+
     public static int numberOfExtras(int[] array) {
         int count = 0;
         for (int i = 0; i < N; i++) {

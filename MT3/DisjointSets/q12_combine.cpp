@@ -1,4 +1,4 @@
-Youaregivenasetofequalitiessuchas
+You are given a set of equalities such as
  0=9
  1=2
  3=5
@@ -6,14 +6,14 @@ Youaregivenasetofequalitiessuchas
  9=4
  5=4
  6=8
- wherenumberscorrespondtovariables.Whentheequalitiesarecom
-bined,weget
+ where numbers correspond to variables. When the equalities are combined,we get
  0=9=4=3=5=7
  1=2
  6=8
- 3equalities. Write the functionthatfinds thenumber of equalities
- whencombinedwhereNrepresents thenumberofvariables, leftand
- rightrepresenttheleftandrightpartsoftheequalities.
+ 3 equalities. 
+ Write the function that finds the number of equalities
+ when combined where N represents the number of variables, left 
+ and right represent the left and right parts of the equalities.
  int combine(intN, int[] left, int[] right)
 
 

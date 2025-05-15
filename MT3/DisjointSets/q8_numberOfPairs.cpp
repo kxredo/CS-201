@@ -3,6 +3,14 @@ Write a function that calculates the number of pair disjoint sets in a
  that disjoint set is 2.
  int numberOfPairs()
 
+ // We wanna count so int pairCount
+ // int setSizes[count]()
+ // iterate through the sets array
+ // find the root of the current set
+ // increment the setSizes[root]
+ // iterate through the setSizes array
+ // if the current setSize is 2, increment the pairCount
+ // return the pairCount
 int DisjointSet::numberOfPairs() {
     int pairCount = 0;
     int* setSizes = new int[count]();
@@ -17,7 +25,5 @@ int DisjointSet::numberOfPairs() {
             pairCount++;
         }
     }
-
-    delete[] setSizes;
     return pairCount;
 }

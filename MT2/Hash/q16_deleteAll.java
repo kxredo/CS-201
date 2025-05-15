@@ -41,4 +41,11 @@ tation assume that linear probing is used as the collision strategy. Do
         }
     }
 
+    int index = hashFunction(X);
+    while(table[index]!=null){
+        if(table[index]==X){
+            table[index]==null;
+        }
+    }
+
 }

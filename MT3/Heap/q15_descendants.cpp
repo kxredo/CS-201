@@ -1,13 +1,12 @@
-Given the index of a d-heap node, write a method that returns the
+/*Given the index of a d-heap node, write a method that returns the
 number of descendants (children, grandchildren, grandgrandchildren, etc.) 
 of that heap node. 
 Do not use any class or external methods.
 int descendants(int no)
-
+*/
 int Heap::descendants(int no) {
     int countDescendants = 0;
 
-    // Iterating over all nodes to count the descendants
     for (int i = no + 1; i < count; ++i) {
         // Check if node i is a descendant of node no
         int current = i;
