@@ -8,8 +8,6 @@ plete graph is a graph, in which all vertices are connected to all vertices.
  graph below (1, 2, 5), (3, 6) and (4, 7) are complete subgraphs.
 
 
-namespace array {
-
     int Graph::numberOfCompleteSubGraphs() {
         int subGraphCount = 0;
         bool* visited = new bool[vertexCount]();
@@ -24,7 +22,6 @@ namespace array {
                 }
             }
         }
-        
         delete[] visited;
         return subGraphCount;
     }

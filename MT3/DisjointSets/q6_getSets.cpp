@@ -2,7 +2,6 @@ Write a function that returns the indexes of disjoint sets in a disjoint
  set structure.
  LinkedList getSets()
 
-#include "LinkedList.h" // Assuming LinkedList is defined elsewhere
 
 LinkedList DisjointSet::getSets() {
     LinkedList setsList;

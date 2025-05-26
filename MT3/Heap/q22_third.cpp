@@ -4,9 +4,7 @@ that returns the third maximum number in the heap. Your method
 should run in O(d2) time.
 
 
-
 int MaxDHeap::third() {
-    
     int second = 0;
     int third = 0;
 
@@ -19,12 +17,8 @@ int MaxDHeap::third() {
             } else {
                 if(array[child].getData() > third){
                     third = array[child].getData();
-                }
-            }
-        }
-    }
+                }}}}
 
-    // Traverse all grandchildren of the root to find the third max element
     for(int i = 0; i <= d; i++){
         for(int j = 0; j <= d; j++){
             int grandChild = d*i + j;

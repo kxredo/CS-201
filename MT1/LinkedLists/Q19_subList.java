@@ -7,29 +7,28 @@ of the second list in the same order.
 boolean subList(LinkedList sub) 
      */
     boolean subList(LinkedList sub) {
-        Node currentMain = head;        // Start with the head of the original list
-        Node currentSub = sub.head;     // Start with the head of the sub list
 
-        // Traverse the original list
-        while (currentMain != null) {
-            Node tempMain = currentMain;
-            Node tempSub = currentSub;
+        Node current = head;
 
-            // Check if sub list matches from the current position
-            while (tempMain != null && tempSub != null && tempMain.data == tempSub.data) {
-                tempMain = tempMain.next;
-                tempSub = tempSub.next;
+        while (current != null) {
+            // Start checking for match from current node
+            Node temp1 = current;
+            Node temp2 = sub.head;
+
+            // Compare nodes while they match
+            while (temp1 != null && temp2 != null && temp1.data == temp2.data) {
+                temp1 = temp1.next;
+                temp2 = temp2.next;
             }
 
-            // If we reached the end of the sub list, a match was found
-            if (tempSub == null) {
-                return true;
-            }
+            // If we've reached the end of sub, it's a match
+            if (temp2 == null) return true;
 
-            currentMain = currentMain.next; // Move to the next node in the main list
+            current = current.next;
         }
 
-        return false; // No match found
+        return false; // sub not found
     }
+}
 
 }

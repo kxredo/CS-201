@@ -9,7 +9,6 @@ Suppose you are given an unsorted array of N integers and two numbers
 
 void partition(int[] A, int X, int Y) {
     
-    int n = A.length;
     int low = 0, mid = 0, high = n - 1;
 
     while (mid <= high) {

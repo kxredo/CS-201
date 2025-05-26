@@ -33,7 +33,7 @@ Write a function that finds the difference between the number of leftist
     int leftistOrRightist() {
         int leftist = 0, rightist = 0;
     
-        Stack stack = new Stack();
+        Stack stack = new Stack(100);
         stack.push(this);
     
         while (!stack.isEmpty()) {

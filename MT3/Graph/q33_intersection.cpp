@@ -4,16 +4,12 @@ Write the method in linkedlist implementation of Graph class
  in the original graph and g2. You may assume both graphs are unweighted.
 
 
-
-namespace list {
-
     Graph Graph::intersection(const Graph& g2, int v) {
         Graph result = new Graph(vertexCount);
         Edge n1 = edges[v].getHead();
         
         while(n1!=nullptr) {
             Edges n2 = g2.edges[v].getHead();
-
             while(n2!=nullptr) {
                 if(n1.getTo() == n2.getTo()){
                     result.addEdge(v, n2.getTo());
@@ -23,5 +19,4 @@ namespace list {
             }
             return result;
         }
-
 }

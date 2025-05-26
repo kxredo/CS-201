@@ -1,8 +1,7 @@
 Modify the breadth first search linked list implementation such that
  it will store the length of the shortest paths from the start node in
  lengths parameter.
- void shortest(int∗ 
-lengths, int start )
+ void shortest(int∗ lengths, int start )
  At the end of the execution, lengths[i] will show the shortest path
  length from node start to node i. You may assume that the path length
  elements are initialized to vertexCount (number of nodes, which should

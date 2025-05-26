@@ -24,5 +24,5 @@ Graph* Graph::inverseGraph() {
                 }
             }
         }
-        return complement;
+        return inverse;
     };

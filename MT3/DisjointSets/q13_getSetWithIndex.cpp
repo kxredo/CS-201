@@ -20,6 +20,5 @@ int* DisjointSet::getSetWithIndex(int index, int& setSize) {
             setSize++;
         }
     }
-
     return result;
 }

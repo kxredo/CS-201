@@ -1,6 +1,5 @@
 Given a graph, write a function that determines if it is undirected.
- Write functions for both adjacency-matrix and adjacency-list represen
-tations.
+ Write functions for both adjacency-matrix and adjacency-list representations.
  boolean isUndirected()
 
 // adjacency matrix
@@ -22,6 +21,7 @@ bool Graph::isUndirected() {
         while (edge != nullptr) {
             int to = edge->getTo();
             bool found = false;
+            
             Edge* reverseEdge = edges[to].getHead();
             while (reverseEdge != nullptr) {
                 if (reverseEdge->getTo() == i) {
