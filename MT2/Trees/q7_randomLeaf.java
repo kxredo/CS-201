@@ -12,7 +12,7 @@ Write a function that returns a random leaf node from a binary search tree.
     public TreeNode randomLeaf() {
         
         if (left == null && right == null) {
-            return this;
+            return root;
         }
 
         Random rand = new Random();

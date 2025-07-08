@@ -11,39 +11,31 @@ void remove(const LinkedList& list2)
  */
 // Method to remove nodes that appear in list2
 void remove(LinkedList list2) {
-    Node current = head; // Pointer to traverse the original list
-
+    Node p1 = head;
+    Node p2 = list2.head;
+    Node prev = null;
+    
     while (current != null) {
-        Node toDelete = null; // Pointer to mark the node for deletion
-        Node list2Current = list2.head; // Pointer to traverse list2
-
-        // Check if the current node in the original list exists in list2
-        while (list2Current != null) {
-            if (current.data == list2Current.data) {
-                toDelete = current; // Mark for deletion if found in list2
-                break; // No need to check further in list2
+        boolean found = false;
+        while (p2 != null) {
+            if (p1.data == p2.data) {
+                found = true;
+                break;
             }
-            list2Current = list2Current.next; // Move to the next node in list2
+            p2 = p2.next;
         }
-
-        // If a node to delete is found, remove it from the original list
-        if (toDelete != null) {
-            // If the node to delete is the head
-            if (toDelete == head) {
-                head = head.next; // Move head to the next node
-                current = head; // Set current to the new head
+        if (found) {
+            // Remove current node
+            if (prev == null) {
+                head = current.next;
+                current = head;
             } else {
-                // Traverse to find the previous node
-                Node prev = head;
-                while (prev.next != toDelete) {
-                    prev = prev.next;
-                }
-                // Remove the node from the list
-                prev.next = toDelete.next; // Bypass the node to delete
-                current = prev.next; // Move current to the next node after deletion
+                prev.next = current.next;
+                current = current.next;
             }
         } else {
-            current = current.next; // Move to the next node if no deletion occurred
+            prev = current;
+            current = current.next;
         }
     }
 }

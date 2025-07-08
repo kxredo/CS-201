@@ -1,4 +1,3 @@
-
 package stackss;
 
 import java.util.Stack;
@@ -13,27 +12,17 @@ Write a function which pops the last two items of a stack and returns
  int multiply()
  */
 public class Q9_multiply {
-    
-        public int multiplyArr() {
-            
-                int a = arr[top];
-                int b = arr[top - 1];
-                top -= 2; // Manually adjusting the top pointer
-                return a * b;
-            }
-        }
-    
-    
-    
-    public int multiplyLL() {
-        
-        int a = top.data;
-        int b = top.next.data;
-        top = top.next.next; // Move top pointer to effectively "pop" the two elements
-        return a * b;
-        }
+
+    int multiply() {
+        int product = data[size - 1] * data[size - 2];
+        size = size - 2; // Remove last two elements
+        return product;
     }
 
-    
-}
+    int multiply() {
+        int product = head.data * head.next.data;
+        // Remove top two nodes
+        head = head.next.next;
+        return product;
+    }
 }

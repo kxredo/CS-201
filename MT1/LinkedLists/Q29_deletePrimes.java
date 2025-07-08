@@ -12,7 +12,7 @@ void deletePrimes()
         Node prev = null;
 
         while (current != null) {
-            if (isPrime(current.data)) { // Check if the current node's data is prime
+            if ((current.data >= 2) && (current.data % 2 !=0)) {
                 if (prev != null) {
                     prev.next = current.next; // Bypass the current node
                 } else {
@@ -23,19 +23,6 @@ void deletePrimes()
             }
             current = current.next; // Move to the next node
         }
-    }
-
-// Helper function to check if a number is prime
-    private boolean isPrime(int n) {
-        if (n <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false; // Not prime if divisible by i
-
-                    }}
-        return true; // Prime if no divisors found
     }
 
 }

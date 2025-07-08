@@ -2,26 +2,30 @@ package stackss;
 
 import java.util.Stack;
 
+/*
+Write a function which removes only the bottom element of the stack.
+ You are only allowed to use pop, push, isEmpty functions (Hint: Use
+ external stack).
+ void removeBottom()
+ */
 
 public class Q10_removeBottom {
 
-
-    public void removeBottom() {
-        int[] tempStack = new int[capacity];
-        int tempTop = -1;
-
-        // Pop elements and store them in a temporary stack
-        for (int i = 0; i < top - K + 1; i++) {
-            tempStack[++tempTop] = stack[i];
+    void removeBottom() {
+        Stack temp = new Stack();
+        // Move all elements except the bottom to temp
+        while (!isEmpty()) {
+            Element e = pop();
+            if (isEmpty()) {
+                // e is the bottom element, do not push it to temp
+                break;
+            }
+            temp.push(e);
         }
-
-        // Restore the remaining elements back to the original stack
-        for (int i = 0; i <= tempTop; i++) {
-            stack[i] = tempStack[i];
+        // Restore stack
+        while (!temp.isEmpty()) {
+            push(temp.pop());
         }
-
-        // Update the top pointer
-        top = tempTop;
     }
 
 }

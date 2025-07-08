@@ -10,9 +10,6 @@ public class Q38_intersec {
  p1 and p2, showing the head nodes of the first and second lists
  respectively.
  2. Compare the contents of the nodes p1 and p2;
- 
- 
- 
 - If p1.data < p2.data, advance p1 pointer to show next node in its list.
 - If p1.data > p2.data, advance p2 pointer to show next node in its list.
 - If p1.data = p2.data, put a new node with content of p1 and advance both pointers p1 and p2 in their respective lists.
@@ -40,7 +37,6 @@ public class Q38_intersec {
             } else { // p1.data == p2.data
                 Node newNode = new Node(p1.data); // Create a new node with the common data
 
-                // Add the new node to the result linked list
                 if (result.head == null) {
                     result.head = newNode; // If the result list is empty, set the new node as the head
                 } else {
@@ -50,12 +46,10 @@ public class Q38_intersec {
                     }
                     current.next = newNode; // Link the new node at the end
                 }
-
                 p1 = p1.next; // Advance both pointers
                 p2 = p2.next;
             }
         }
-
         return result; // Return the resulting intersection list
     }
 

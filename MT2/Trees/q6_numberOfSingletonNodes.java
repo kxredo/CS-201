@@ -16,4 +16,5 @@ public class q6_numberOfSingletonNodes {
 
         return count + left.numberOfSingletonNodes() + right.numberOfSingletonNodes();
     }
+    
 }

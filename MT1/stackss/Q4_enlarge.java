@@ -8,14 +8,13 @@ For array representation, write a function that enlarges the stack when
  stack.
  void enlarge()
      */
-    public void enlarge() {
-        int newCapacity = capacity * 2;
-        int[] newStack = new int[newCapacity];
-        for (int i = 0; i < capacity; i++) {
-            newStack[i] = stack[i];
+    void enlarge() {
+        int newCapacity = data.length * 2;
+        int[] newData = new int[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
         }
-        stack = newStack;
-        capacity = newCapacity;
-    }
+        data = newData;
+}
     
 }

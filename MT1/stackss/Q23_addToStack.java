@@ -22,11 +22,9 @@ public class Q23_addToStack {
      */
 
     void addToStack(Stack s, int p, int q) {
-        if (p < 1 || q < p || s.isEmpty()) {
-            return;
-        }
+        
 
-        LinkedListStack tempStack = new LinkedListStack();
+        Stack tempStack = new Stack();
         Node current = s.getTop(); // Assuming there's a method to get the top node
 
         // Traverse to find the starting point

@@ -2,35 +2,47 @@ package stackss;
 
 public class Q15_isEmpty {
 
-    // Check if stack is empty
-    public boolean isEmpty() {
-        return head == null;
-    }
+    class DoubleNode {
 
-    // Push operation - adds at the head (top) of stack
-    public void push(DoubleNode<T> newNode) {
-        if (isEmpty()) {
-            head = newNode;
-        } else {
-            newNode.next = head;
-            head.prev = newNode;
-            head = newNode;
+        int data;
+        DoubleNode prev;
+        DoubleNode next;
+
+        public DoubleNode(int data) {
+            this.data = data;
+            this.prev = null;
+            this.next = null;
         }
     }
-    // Pop the top node from the stack
 
-    public DoubleNode<T> pop() {
-        while (!isEmpty()) {
+    class Stack {
 
-            DoubleNode<T> temp = head;
+        private DoubleNode head = null;
+
+        public boolean isEmpty() {
+            return head == null;
+        }
+
+        public void push(DoubleNode newNode) {
+            if (head != null) {
+                newNode.next = head;
+                head.prev = newNode;
+            }
+            head = newNode;
+            newNode.prev = null;
+        }
+
+        public DoubleNode pop() {
+            if (head == null) {
+                return null;
+            }
+            DoubleNode node = head;
             head = head.next;
-
             if (head != null) {
                 head.prev = null;
             }
-
-            temp.next = null;  // Clear the reference to the next node
-            return temp;
+            node.next = null; // disconnect for clarity
+            return node;
         }
     }
 }

@@ -16,9 +16,9 @@ Graph* Graph::inverseGraph() {
                     if(edge->getTo() == j) {
                         hasEdge = true;
                         break;
-                    };
+                    }
                     edge = edge->getNext();
-                };
+                }
                 if (!hasEdge) {
                     inverse->addEdge(i, j);
                 }

@@ -18,7 +18,7 @@
                 }
             }
         }
-        return graph;
+        return g2;
     }
 
 }

@@ -22,5 +22,6 @@ public class q5_numberOfFullNodes {
 
         return count;
     }
+
 }
 

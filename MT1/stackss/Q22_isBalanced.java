@@ -11,23 +11,25 @@ Write a static method using an external stack (only one external stack
  etc. Write the method in array implementation.
  boolean isBalanced(int[] a)
      */
-
-    static boolean isBalanced(int[] a) {
-        ArrayStack stack = new ArrayStack(a.length);
-
-        for (int value : a) {
-            if (value < 10) {
-                stack.push(value);
-            } else if (value >= 10 && !stack.isEmpty() && value == 10 + stack.pop()) {
-                continue;
+    public static boolean isBalanced(int[] a) {
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < a.length; i++) {
+            int num = a[i];
+            if (num < 10) {
+                stack.push(num);
+            } else if (num >= 10 && num < 20) {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                int top = stack.pop();
+                if (num != top + 10) {
+                    return false;
+                }
             } else {
                 return false;
             }
         }
-
         return stack.isEmpty();
     }
-    
-    
-    
+
 }

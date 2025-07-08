@@ -9,7 +9,7 @@ Write the method in linkedlist implementation of Graph class
         Edge n1 = edges[v].getHead();
         
         while(n1!=nullptr) {
-            Edges n2 = g2.edges[v].getHead();
+            Edge n2 = g2.edges[v].getHead();
             while(n2!=nullptr) {
                 if(n1.getTo() == n2.getTo()){
                     result.addEdge(v, n2.getTo());

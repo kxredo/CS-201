@@ -5,7 +5,6 @@ A bipartite graph is a graph such that vertices of the graph can be
  Depth or breath first search to traverse the graph.
 
 bool isBipartite() {
-    if (vertexCount == 0) return true;
     bool* visited = new bool[vertexCount];
     int* colors = new int[vertexCount];
 
@@ -13,18 +12,14 @@ bool isBipartite() {
         visited[i] = false;
         colors[i] = 0;
     }
-    // Color first vertex
     colors[0] = 1;
     visited[0] = true;
     
     depthFirstSearch(visited, 0);
     
-    // Check if any adjacent vertices have same color
     for (int i = 0; i < vertexCount; i++) {
         for (int j = 0; j < vertexCount; j++) {
             if (edges[i][j] > 0 && colors[i] == colors[j]) {
-                delete[] visited;
-                delete[] colors;
                 return false;
             }
         }

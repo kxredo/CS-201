@@ -8,19 +8,11 @@ Assume that there are at least n nodes after node X.
 void move(Node X, int n)
      */
     void move(Node X, int n) {
-        if (X == null || n <= 0) {
-            return; // Check if X is null or n is invalid
-        }
         Node current = X;
 
         // Traverse n positions forward from node X
         for (int i = 0; i < n && current != null; i++) {
             current = current.next; // Move to the next node
-        }
-
-        // If current is null, there are not enough nodes to move forward
-        if (current == null) {
-            return;
         }
 
         // Update links to move node X

@@ -16,34 +16,26 @@ creasing order. The first node has index 1. You are not allowed to
  Sorted:
  2 10 3 7 6 4 9 2 13 0 20
      */
-    boolean evenOddSorted() {
-        Node previous = head;
-        Node tmp = head;
-        while (tmp != null) {
-            previous = tmp;
-            tmp = tmp.getNext();
-            if (tmp != null) {
-                tmp = tmp.getNext();
-                if (tmp != null) {
-                    if (previous.getData() >= tmp.getData()) {
-                        return false;
-                    }
-                }
+
+    public boolean evenOddSorted() {
+        Node current = this.head;
+        int index = 1;
+        int lastOdd = null;
+        int lastEven = null;
+
+        while (current != null) {
+            if (index % 2 == 1) { // Odd index: should be increasing
+                if (lastOdd != null && current.data < lastOdd)
+                    return false;
+                lastOdd = current.data;
+            } else { // Even index: should be decreasing
+                if (lastEven != null && current.data > lastEven)
+                    return false;
+                lastEven = current.data;
             }
-        }
-        tmp = head.getNext();
-        while (tmp != null) {
-            previous = tmp;
-            tmp = tmp.getNext();
-            if (tmp != null) {
-                tmp = tmp.getNext();
-                if (tmp != null) {
-                    if (previous.getData() <= tmp.getData()) {
-                        return false;
-                    }
-                }
-            }
+            current = current.next;
+            index++;
         }
         return true;
-    }
+}
 }

@@ -20,9 +20,6 @@ public class Q39_isPalindrome {
  allowed to use attributes, constructors, getters and setters.
      */
     boolean isPalindrom() {
-        if (head == null) {
-            return true; // An empty list is considered a palindrome
-        }
         Node p1 = head; // Pointer to the beginning of the list
         Node p2 = head; // Pointer to traverse to the end
 

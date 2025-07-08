@@ -29,8 +29,6 @@ LinkedList removeDivisibleByN(int N)
                     removedCurrent.next = current;
                     removedCurrent = removedCurrent.next;
                 }
-
-                // Move to the next node
                 Node temp = current.next;
                 current.next = null; // Clear the reference to help garbage collection
                 current = temp;

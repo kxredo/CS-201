@@ -5,7 +5,7 @@ public class Q42_getIndexed {
         LinkedList result = new LinkedList(); // New linked list to store results
         Node currentResult = null; // Pointer for the result list
         Node currentIndices = list.head; // Pointer for the index list
-        Node currentOriginal = this.head; // Pointer for the original list
+        Node currentOriginal = head; // Pointer for the original list
         int index = 1; // Start index at 1
 
         while (currentIndices != null) {
@@ -27,11 +27,10 @@ public class Q42_getIndexed {
                     currentResult = currentResult.next; // Move currentResult forward
                 }
             }
-
             // Move to the next index in the indices list
             currentIndices = currentIndices.next; 
             index = 1; // Reset index for the next target index
-            currentOriginal = this.head; // Reset to the start of the original list
+            currentOriginal = head; // Reset to the start of the original list
         }
 
         return result; // Return the new linked list with the indexed elements

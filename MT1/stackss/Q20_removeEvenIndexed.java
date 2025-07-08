@@ -11,7 +11,7 @@ Write a method which removes only the even indexed (2, 4, . . .)
      */
 
     public void removeEvenIndexedLL() {
-        LinkedListStack tempStack = new LinkedListStack();
+        Stack tempStack = new Stack();
         int index = 1; // Start index from 1
 
         // Transfer elements to the temp stack, skipping even-indexed elements

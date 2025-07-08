@@ -8,6 +8,7 @@ Write the method in linked list implementation of Graph class
 
     Graph Graph::merge(const Graph& g2, int v) {
         Graph result = new Graph(vertexCount);
+        
         for (int i = 0; i < v; ++i) {
             Edge* edge = edges[i].getHead();
             while (edge != nullptr) {

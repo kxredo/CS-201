@@ -1,5 +1,7 @@
 package LinkedLists;
 
+import java.awt.HeadlessException;
+
 public class Q33_containsOnlyDuplicates {
 
     /*
@@ -11,14 +13,11 @@ tors, getters and setters.
  boolean containsOnlyDuplicates()
      */
     public boolean containsOnlyDuplicates() {
-        if (head == null) {
-            return true; // An empty list can be considered to have only duplicates
-        }
-
+        int count = 0;
         Node current = head;
+        Node temp = head;
+
         while (current != null) {
-            int count = 0;
-            Node temp = head;
             while (temp != null) {
                 if (temp.data == current.data) {
                     count++;
@@ -33,4 +32,4 @@ tors, getters and setters.
         return true; // All elements occur exactly twice
     }
 }
-}
+

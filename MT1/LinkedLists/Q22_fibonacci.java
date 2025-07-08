@@ -16,7 +16,8 @@ Write a function that returns the Fibonacci numbers between A and B
         LinkedList result = new LinkedList();
         Node current = null;
 
-        int f0 = 0, f1 = 1;
+        int f0 = 0;
+        int f1 = 1;
 
         // Generate Fibonacci numbers and add those within range to the linked list
         while (f0 <= B) {
@@ -31,12 +32,10 @@ Write a function that returns the Fibonacci numbers between A and B
                     current = current.next;
                 }
             }
-
             int nextFibo = f0 + f1;
             f0 = f1;
             f1 = nextFibo;
         }
-
         return result;
     }
 

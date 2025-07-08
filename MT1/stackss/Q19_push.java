@@ -1,53 +1,32 @@
 package stackss;
 
 public class Q19_push {
-    public void pushArray(int k, int data) {
-        if (k < 1 || k > top + 2) { // Check for valid k
-            throw new IllegalArgumentException("Invalid index: " + k);
-        }
 
-        // Shift elements down to create space for the new element
-        for (int i = top; i >= top - (k - 1); i--) {
-            elements[i + 1] = elements[i];
-        }
+    void push(int k, int data) {
 
-        elements[top - (k - 1)] = data; // Insert the new element
-        top++; // Increment the top index
+        int idx = size - k + 1; // index to insert at
+        // Shift elements up to make room
+        for (int i = size; i > idx; i--) {
+            array[i] = array[i - 1];
+        }
+        array[idx] = data;
+        size++;
     }
 
-    public void pushLinkedList(int k, int data) {
-        if (k < 1) { // Check for valid k
-            throw new IllegalArgumentException("Invalid index: " + k);
-        }
-
-        Node newNode = new Node(data); // Create new node
-
-        if (k == 1) { // If k is 1, simply push to the top
-            newNode.next = top;
-            top = newNode;
-            return;
-        }
-
-        // Traverse to find the position to insert
-        Node current = top;
-        Node previous = null;
-        int index = 1; // Start counting from the top
-
-        // Traverse to the k'th position
-        while (current != null && index < k) {
-            previous = current;
+    void push(int k, int data) {
+        DoubleNode newNode = new DoubleNode(data);
+        DoubleNode current = head;
+        int count = 1;
+        
+        while (current != null && count < k - 1) {
             current = current.next;
-            index++;
+            count++;
         }
-
-        // If we're inserting at the end
-        if (current == null) {
-            previous.next = newNode; // Insert at the end
-            return;
+        
+        newNode.next = current.next;
+        if (current.next != null) {
+            current.next.prev = newNode;
         }
-
-        // Insert the new node at the k'th position
-        previous.next = newNode; // Link previous to the new node
-        newNode.next = current; // Link new node to the current node
+        current.next = newNode;
+        newNode.prev = current;
     }
-}

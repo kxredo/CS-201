@@ -8,42 +8,39 @@ Write a function which returns a copy of the stack as a new stack. You
  */
 public class Q11_copy {
 
-    public Stack copyLinkedList() {
+    Stack copy() {
+        // First, traverse and create a reversed copy
         Stack newStack = new Stack();
-
-        if (top == null) {
-            return newStack;
+        Node current = head;
+        Node revHead = null;
+        
+        while (current != null) {
+            Node n = new Node(current.data);
+            n.next = revHead;
+            revHead = n;
+            current = current.next;
         }
-
-        // Create the first node
-        newStack.top = new Node(top.data);
-        newStack.size = size;
-
-        // Create pointers for traversal
-        Node currentOriginal = top.next;
-        Node currentNew = newStack.top;
-
-        // Copy each node
-        while (currentOriginal != null) {
-            currentNew.next = new Node(currentOriginal.data);
-            currentNew = currentNew.next;
-            currentOriginal = currentOriginal.next;
+        // Now, reverse again to preserve stack order
+        Node newHead = null;
+        current = revHead;
+        while (current != null) {
+            Node n = new Node(current.data);
+            n.next = newHead;
+            newHead = n;
+            current = current.next;
         }
-
+        newStack.head = newHead;
         return newStack;
     }
 
-    public Stack copyArray() {
-        ArrayStack newStack = new ArrayStack(this.capacity);
-
-        // Copy the array elements directly
-        newStack.array = new int[this.capacity];
-        System.arraycopy(this.array, 0, newStack.array, 0, this.capacity);
-
-        // Copy the top pointer
-        newStack.top = this.top;
-
-        return newStack;
+    Stack copy() {
+        Stack s = new Stack();
+        s.data = new int[size];
+        s.size = size;
+        for (int i = 0; i < size; i++) {
+            s.data[i] = data[i];
+        }
+        return s;
     }
 
 }
