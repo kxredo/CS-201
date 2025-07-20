@@ -20,19 +20,19 @@ should be new. You can not use any linked list methods except getters and setter
             if (p2 == null || p1.data < p2.data) {
                 Node newNode = new Node(p1.data);
                 if (result.head == null) {
-                    result.head = newNode; // Set head for the first element
-                    current = result.head; // Initialize current pointer
+                    result.head = newNode; 
+                    current = result.head; 
                 } else {
-                    current.next = newNode; // Link the new node
-                    current = current.next; // Move the current pointer
+                    current.next = newNode; 
+                    current = current.next; 
                 }
-                p1 = p1.next; // Move to the next node in list1
+                p1 = p1.next; 
             } 
             else if (p1.data > p2.data) {
-                p2 = p2.next; // Move to the next node in list2
+                p2 = p2.next; 
             } 
-            else { // p1.data == p2.data
-                p1 = p1.next; // Skip equal elements
+            else { 
+                p1 = p1.next; 
                 p2 = p2.next;
             }
         }

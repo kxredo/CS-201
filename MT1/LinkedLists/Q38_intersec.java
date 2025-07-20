@@ -25,32 +25,32 @@ public class Q38_intersec {
  1 7 11 */
 
     LinkedList intersec(LinkedList list1, LinkedList list2) {
-        LinkedList result = new LinkedList(); // New linked list to store the intersection
-        Node p1 = list1.head; // Pointer for the first list
-        Node p2 = list2.head; // Pointer for the second list
+        LinkedList result = new LinkedList(); 
+        Node p1 = list1.head; 
+        Node p2 = list2.head;
 
         while (p1 != null && p2 != null) {
             if (p1.data < p2.data) {
-                p1 = p1.next; // Advance p1
+                p1 = p1.next; 
             } else if (p1.data > p2.data) {
-                p2 = p2.next; // Advance p2
-            } else { // p1.data == p2.data
-                Node newNode = new Node(p1.data); // Create a new node with the common data
+                p2 = p2.next;
+            } else {
+                Node newNode = new Node(p1.data); 
 
                 if (result.head == null) {
-                    result.head = newNode; // If the result list is empty, set the new node as the head
+                    result.head = newNode; //
                 } else {
                     Node current = result.head;
                     while (current.next != null) {
-                        current = current.next; // Traverse to the end of the result list
+                        current = current.next; 
                     }
-                    current.next = newNode; // Link the new node at the end
+                    current.next = newNode; 
                 }
-                p1 = p1.next; // Advance both pointers
+                p1 = p1.next;
                 p2 = p2.next;
             }
         }
-        return result; // Return the resulting intersection list
+        return result;
     }
 
 }

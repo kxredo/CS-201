@@ -9,27 +9,23 @@ Write a recursive method in TreeNode Class
  create an extra array to forward reduced path to the children.
  */
 public class q41_hasPath {
-
     public boolean hasPath(int[] path) {
-        if (path == null || path.length == 0) {
-            return false;
+        if (path.length == 0) {
+            return true; // Empty path is always valid
         }
-        // Current node must match path[0]
-        if (this.value != path[0]) {
-            return false;
+        
+        if (path[0] != value) {
+            return false; // First element must match the current node's value
         }
-        // If this is the last value in path, we have found a valid path
-        if (path.length == 1) {
-            return true;
-        }
-        // Prepare reduced path for children
-        int[] reduced = new int[path.length - 1];
-        System.arraycopy(path, 1, reduced, 0, path.length - 1);
 
-        // Try left and right children recursively
-        boolean leftHas = (left != null) && left.hasPath(reduced);
-        boolean rightHas = (right != null) && right.hasPath(reduced);
+        // Create a new array for the reduced path
+        int[] reducedPath = new int[path.length - 1];
+        System.arraycopy(path, 1, reducedPath, 0, path.length - 1);
 
-        return leftHas || rightHas;
+        // Check left and right children
+        boolean leftHasPath = (left != null) && left.hasPath(reducedPath);
+        boolean rightHasPath = (right != null) && right.hasPath(reducedPath);
+
+        return leftHasPath || rightHasPath; // Return true if either child has the path
     }
 }

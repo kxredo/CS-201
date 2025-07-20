@@ -13,16 +13,13 @@ public class q2_hashFunction {
 
     public int hashFunction(LinkedList l) {
         int sum = 0;
-
-        // Traverse through the linked list and sum up the key values
-        Node current = l.head;  // Assuming `head` is the first node in the linked list
+        Node current = l.head; // Traverse the input linked list
         while (current != null) {
-            sum += current.key;  // Assuming `key` is the value stored in the node
-            current = current.next;  // Move to the next node
+            sum += current.key; // Sum up the key values
+            current = current.next;
         }
-
-        // Hash the sum by taking the modulo with a prime number or the table size
-        return sum % N;  // 997 is a prime number (you can use a different prime number or table size)
+        return hashFunction(sum); // Use the existing hash function for the sum
     }
+}
 
 }

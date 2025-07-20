@@ -16,7 +16,6 @@ boolean palindrom()
             slow = slow.next;
             fast = fast.next.next;
         }
-
         // Step 2: Reverse the second half of the linked list
         Node prev = null;
         Node current = slow;
@@ -27,7 +26,6 @@ boolean palindrom()
             prev = current;
             current = nextNode;
         }
-
         // Step 3: Compare the first half and the reversed second half
         Node firstHalf = head;
         Node secondHalf = prev; // Start from the head of the reversed second half

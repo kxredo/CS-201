@@ -3,9 +3,7 @@ package stackss;
 public class Q21_popBottom {
 
     LinkedList popBottomK(int k) {
-        if (k <= 0 || isEmpty()) {
-            return null;
-        }
+        
         Node current = top;
         Node previous = null;
         Node bottomListHead = null;

@@ -27,7 +27,6 @@ public class Q39_isPalindrome {
         while (p2.next != null) {
             p2 = p2.next;
         }
-
         // Compare elements from the front and back
         while (p1 != p2 && p1.next != p2) {
             if (p1.data != p2.data) {
@@ -36,7 +35,6 @@ public class Q39_isPalindrome {
             p1 = p1.next; // Move p1 to the next node
             p2 = p2.prev; // Move p2 to the previous node
         }
-
         return true; // All corresponding elements matched, it's a palindrome
     }
 

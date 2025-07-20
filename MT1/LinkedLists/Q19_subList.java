@@ -1,5 +1,7 @@
 package LinkedLists;
 
+import org.w3c.dom.Node;
+
 public class Q19_subList {
 
     /*Write a function that checks if the original list contains the elements
@@ -29,6 +31,5 @@ boolean subList(LinkedList sub)
 
         return false; // sub not found
     }
-}
-
+    
 }

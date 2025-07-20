@@ -22,7 +22,6 @@ Write a method which removes only the even indexed (2, 4, . . .)
             }
             index++;
         }
-
         // Restore elements back to the original stack
         while (!tempStack.isEmpty()) {
             push(tempStack.pop());

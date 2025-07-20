@@ -17,7 +17,6 @@ public class Q43_removeKthBeforeLast {
         // Step 1: Count the number of elements (N)
         int N = 0;
         Node current = head;
-        
         while (current != null) {
             N++;
             current = current.next;
@@ -41,13 +40,11 @@ public class Q43_removeKthBeforeLast {
                 head = null; // only one node
             return;
         }
-        // Step 3: Remove (N-K+1)'th node from start (1-based indexing)
         int pos = N - K + 1;
         current = head;
         for (int i = 1; i < pos; i++) {
             current = current.next;
         }
-        // Remove 'current'
         if (current.prev != null)
             current.prev.next = current.next;
         if (current.next != null)

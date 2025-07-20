@@ -36,5 +36,4 @@ Write a method for doubly linked lists, which returns a new doubly
 
         return evenList; // Return the new list with even indexed nodes
     }
-
-}
+    }

@@ -7,7 +7,6 @@ Write a function that will add a new node before the last node of a singly linke
 void insertBeforeLast (Node newNode)
      */
     void insertBeforeLast(Node newNode) {
-        
         Node current = head;
         Node previous = null;
 
@@ -16,7 +15,6 @@ void insertBeforeLast (Node newNode)
             previous = current; // Keep track of the current node
             current = current.next; // Move to the next node
         }
-
         // Insert the new node before the last node
         if (previous != null) {
             previous.next = newNode; // Link the new node

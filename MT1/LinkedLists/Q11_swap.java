@@ -7,10 +7,6 @@ void swap(DoubleNode first, DoubleNode second)
  */
     
  public void swap(DoubleNode first, DoubleNode second) {
-    if (first == null || second == null || first == second) {
-        return; // No need to swap if either node is null or they are the same node
-    }
-
     // Swap the previous pointers
     DoubleNode tempPrev = first.prev;
     first.prev = second.prev;

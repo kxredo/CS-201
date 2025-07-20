@@ -13,9 +13,7 @@ lastOneWins(int k)
  •Return the remaining node.
 Let say the list is 1 2 3 4 5 6, and k = 2, then 2, 4, 6, 3, 1 will be deleted, 5 remains.
      */
-    Node LinkedList
-
-    lastOneWins(int k) {
+    Node LinkedList lastOneWins(int k) {
         Node tmp = head;
         Node previous = null;
         while (head != tail) {

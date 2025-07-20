@@ -22,8 +22,6 @@ public class Q23_addToStack {
      */
 
     void addToStack(Stack s, int p, int q) {
-        
-
         Stack tempStack = new Stack();
         Node current = s.getTop(); // Assuming there's a method to get the top node
 
@@ -31,7 +29,6 @@ public class Q23_addToStack {
         for (int i = 1; current != null && i < p; i++) {
             current = current.next; // Move to the p-th node
         }
-
         // Push the elements from index p to q into a temporary stack
         for (int i = p; current != null && i <= q; i++) {
             Node newNode = new Node(current.data);
@@ -39,7 +36,6 @@ public class Q23_addToStack {
             tempStack.setTop(newNode); // Update top of tempStack
             current = current.next; // Move to the next node
         }
-
         // Add the temporary stack elements to the original stack
         while (!tempStack.isEmpty()) {
             Node newNode = new Node(tempStack.pop().data); // Assuming pop returns the top node

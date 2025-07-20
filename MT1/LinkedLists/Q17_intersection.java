@@ -21,6 +21,7 @@ Given two sorted linked lists L1 and L2, write a function to compute L1 ∩L2.
             } else {
                 // Found a common element
                 Node newNode = new Node(current1.data);
+                
                 if (result.head == null) {
                     result.head = newNode; // Set as head if result is empty
                     resultCurrent = result.head;

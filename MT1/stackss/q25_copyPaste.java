@@ -12,7 +12,6 @@ Write the method for array implementation
 public class q25_copyPaste {
 
     void copyPaste(Stack src, int index) {
-        
         int srcLen = src.size;
 
         // Shift elements in this stack to make room for src

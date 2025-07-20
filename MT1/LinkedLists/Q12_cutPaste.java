@@ -9,9 +9,6 @@ void cutPaste(DoubleNode first, DoubleNode last, DoubleNode paste)
     head ;
 
     public void cutPaste(DoubleNode first, DoubleNode last, DoubleNode paste) {
-        if (first == null || last == null || paste == null) {
-            return; // If any of the nodes are null, do nothing
-        }
 
         // Detach the segment from the first list
         if (first.prev != null) {

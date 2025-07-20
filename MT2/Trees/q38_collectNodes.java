@@ -1,22 +1,38 @@
 package Trees;
 
+/*
+Write the recursive method
+ int [] collectNodes()
+ in TreeNode class, which collects all values in all nodes in the tree in a
+ sorted manner. You are not allowed to use any tree methods. You cannot use another method.
+ */
 import java.util.ArrayList;
 
 public class q38_collectNodes {
 
-
-    private void collectNodes(ArrayList<Integer> list) {
-        // Traverse the left subtree if exists
+    int[] collectNodes() {
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        // In-order traversal: left, root, right
         if (left != null) {
-            left.collectNodesHelper(list);
+            int[] leftArr = left.collectNodes();
+            for (int n : leftArr) {
+                list.add(n);
+            }
         }
-
-        // Add current node's value to the list
         list.add(val);
-
-        // Traverse the right subtree if exists
+        
         if (right != null) {
-            right.collectNodesHelper(list);
+            int[] rightArr = right.collectNodes();
+            for (int n : rightArr) {
+                list.add(n);
+            }
         }
+        // Convert ArrayList to int[]
+        int[] arr = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            arr[i] = list.get(i);
+        }
+        return arr;
     }
 }

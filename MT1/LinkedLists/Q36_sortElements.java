@@ -25,16 +25,16 @@ Write the following algorithm to sort the elements in the doubly linked
 
     public DoublyLinkedList sortElements() {
         DoublyLinkedList sorted = new DoublyLinkedList();
-
         int largest = head.getData();
-        Node tmp = head.getNext();
+        Node tmp = head;
+
         while(tmp!=null) {
             if(tmp.getData() > largest) {
                 largest = tmp.data;
             }
             tmp = tmp.next;
         }
-        for(int i = 1; i<=largest; i++) {
+        for(int i = 1; i <= largest; i++) {
             tmp = head;
             int count = 0;
             while(tmp!=null) {
@@ -50,7 +50,7 @@ Write the following algorithm to sort the elements in the doubly linked
                 } else {
                     sorted.tail.setNext(newNode);
                 }
-                newNode.setPrevious((DoublyNode) sorted.tail);
+                newNode.setPrevious(sorted.tail);
                 sorted.tail = newNode;
             }
         }
