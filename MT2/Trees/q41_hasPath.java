@@ -11,11 +11,11 @@ Write a recursive method in TreeNode Class
 public class q41_hasPath {
     public boolean hasPath(int[] path) {
         if (path.length == 0) {
-            return true; // Empty path is always valid
+            return true; 
         }
         
-        if (path[0] != value) {
-            return false; // First element must match the current node's value
+        if (path[0] != data) {
+            return false; 
         }
 
         // Create a new array for the reduced path

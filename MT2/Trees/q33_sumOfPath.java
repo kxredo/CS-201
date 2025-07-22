@@ -2,19 +2,26 @@ package Trees;
 
 public class q33_sumOfPath {
 
-    int sumOfPath(String path) {
+    int sumOfPath(String path){
+        int sum = 0;
+        TreeNode current = root;
 
-        int sum = root.data;
-        TreeNode node = root;
-
-        for (int i = 0; i < path.length; i++) {
-            if (path.charAt(i) == '0') {
-                node = node.left;
-            } else {
-                node = node.right;
+        for(char dir : path.toCharArray()){
+            if(current != null) {
+                sum += current.getData();
+                if(dir == '0'){
+                    current = current.getLeft();
+                } else if(dir == '1'){
+                    current = current.getRight();
+                }
+                if(current.left!=null){
+                    sum += current.left.getData();
+                }
+                if(current.right!=null){
+                    sum+= current.right.getData();
+                }
             }
-            sum += node.data;
         }
-        return sum;
     }
-}
+
+    }

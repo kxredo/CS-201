@@ -1,6 +1,7 @@
 package Trees;
 
 import java.util.LinkedList;
+
 /*
 Write a recursive method
  void pathList(LinkedList l)
@@ -10,21 +11,20 @@ Write a recursive method
  called with an empty linked list for the root node.
  */
 public class q30_pathList {
-    void pathList(LinkedList<Integer> l) {
-        // Add the current node's value to the linked list
-        l.add(val);
 
-        // If the current node's value is odd, move to the left child (if exists)
-        if (val % 2 != 0) {
-            if (left != null) {
-                left.pathList(l);  // Recurse on the left child
-            }
-        }
-        // If the current node's value is even, move to the right child (if exists)
-        else {
+    void pathList(LinkedList l) {
+        
+        l.add(data);
+        
+        if (data % 2 == 0) {
             if (right != null) {
-                right.pathList(l);  // Recurse on the right child
+                right.pathList(l);
+            }
+        } else {
+            if (left != null) {
+                left.pathList(l);
             }
         }
+
     }
 }

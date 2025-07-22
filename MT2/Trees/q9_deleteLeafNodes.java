@@ -7,12 +7,20 @@ public class q9_deleteLeafNodes {
 Write a function that deletes all leaf nodes from a binary search tree.
 void deleteLeafNodes()
  */
-    public void deleteLeafNodes() {
-        if (left == null && right == null) {
-            this = null;
-        } else {
-            left.deleteLeafNodes();
-            right.deleteLeafNodes();
+    void deleteLeafNodes(){
+        if (left != null) {
+            if (left.left == null && left.right == null) {
+                left = null;
+            } else {
+                left.deleteLeafNodes();
+            }
+        }
+        if (right != null) {
+            if (right.left == null && right.right == null) {
+                right = null;
+            } else {
+                right.deleteLeafNodes();
+            }
         }
     }
 }

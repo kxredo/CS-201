@@ -14,15 +14,15 @@ public class q25_sumOfTwo {
     public static boolean sumOfTwoK(int[] array, int K) {
         Hash hash = new Hash(array.length);
 
-        // Iterate through the array
         for (int i = 0; i < array.length; i++) {
-            int complement = K - array[i];     // Check if the complement (K - array[i]) is already in the hash table
+            int complement = K - array[i];     
             int index = hash.hashFunction(complement);
+            
             while (hash.table[index] != null) {
                 if (hash.table[index].key == complement) {     
                     return true;
                 }
-                index = (index + 1) % hash.table.length; // Insert the current element into the hash table
+                index = (index + 1) % hash.table.length; // 
             }
             hash.insert(array[i]);
         }

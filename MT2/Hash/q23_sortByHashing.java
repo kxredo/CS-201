@@ -10,27 +10,26 @@ int [] sortByHashing(int[] array)
  in the array, the sorted array should contain only numbers less than
  that.
  */
-    public static int[] sortByHashing(int[] array) {
-        Hash table = new Hash (2*array.length);
-        int max = array[0];
-        int [] result = new int[array.length];
-
-
-        for(int i = 0; i < array.length; i++) {
-            if (array[i] > max){
-                max = array[i];
+    int[] sortByHashing(int[] array) {
+        int max = Integer.MIN_VALUE;
+        for (int value : array) {
+            if (value > max) {
+                max = value;
             }
         }
-        for(int i = 0; i < array.length; i++) {
-            table.insert(array[i]);
+
+        Hash hash = new Hash(max + 1);
+        for (int value : array) {
+            hash.insert(value);
         }
+
+        int[] sortedArray = new int[array.length];
         int index = 0;
-        for(int i = 0; i <= max; i++){
-            if(table.search(i) != null){
-                result[index] = i;
-                index++;
+        for (int i = 0; i < hash.table.length; i++) {
+            if (hash.table[i] != null) {
+                sortedArray[index++] = hash.table[i].getData();
             }
         }
-        return result;
+        return sortedArray;
     }
 }

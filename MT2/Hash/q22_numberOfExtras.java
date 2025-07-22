@@ -17,16 +17,23 @@ Write a static method in Hash class
 // N is size of array
 // value = array[i]
 // use hashing (int index = hashFunction(value))
+    int numberOfExtras(int[] array) {
+        Hash hash = new Hash(array.length);
+        int extras = 0;
 
+        for (int i = 0; i < array.length; i++) {
+            int index = hash.hashFunction(array[i]);
 
-    public static int numberOfExtras(int[] array) {
-        int count = 0;
-        for (int i = 0; i < N; i++) {
-            if (table[i] == null && table[i + 1] % N != null) {
-                count++;
+            while (hash.table[index] != null) {
+                if (hash.table[index].getData() == array[i]) {
+                    extras++;
+                    break;
+                }
+                index = (index + 1) % N;
             }
+            hash.table[index] = new Element(array[i]);
         }
-        return count;
+        return extras;
     }
 
 }

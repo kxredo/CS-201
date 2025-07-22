@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.Queue;
+
 /*
 Write a non-recursive method
  int countEvenNodes()
@@ -10,25 +12,21 @@ Write a non-recursive method
 public class q42_countEvenNodes {
 
     public int countEvenNodes() {
-        
         int count = 0;
-        Queue queue = new Queue();
-        TreeNode current = head;
-
-        while (head != null) {
-            if (current.value % 2 == 0) {
+        Queue queue = new Queue(100);
+        queue.enqueue(root);
+        
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.dequeue();
+            if (current.data % 2 == 0) {
                 count++;
             }
-            // Manually enqueue children
             if (current.left != null) {
-                tail.next = new TreeNode(current.left);
-                tail = tail.next;
+                queue.enqueue(new Element(current.left));
             }
             if (current.right != null) {
-                tail.next = new TreeNode(current.right);
-                tail = tail.next;
+                queue.enqueue(new Element(current.right));
             }
-            head = head.next; // Manually dequeue
         }
         return count;
     }

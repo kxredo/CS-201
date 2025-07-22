@@ -10,28 +10,21 @@ Write the recursive method
  the number of nodes which have value larger than p and less than q in
  the tree.
      */
-
 // returns sum of keys between p and q
 // k is number of nodes with val > p && val < q
-
     int sumOfNodesBetween(int p, int q) {
         int sum = 0;
-
-        // If the current node's value is within the range (p, q), include it in the sum
-        if (data > p && data < q) {
+        
+        if (data >= p && data <= q) {
             sum += data;
         }
-
-        // If the current node's value is greater than p, we need to check the left subtree
-        if (data > p && left != null) {
+        if (left != null && data > p) {
             sum += left.sumOfNodesBetween(p, q);
         }
-
-        // If the current node's value is less than q, we need to check the right subtree
-        if (data < q && right != null) {
+        if (right != null && data < q) {
             sum += right.sumOfNodesBetween(p, q);
         }
-
         return sum;
     }
+
 }

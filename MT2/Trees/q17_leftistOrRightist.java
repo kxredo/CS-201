@@ -31,27 +31,27 @@ Write a function that finds the difference between the number of leftist
 
     //Stack implementation
     int leftistOrRightist() {
-        int leftist = 0, rightist = 0;
+        int leftist = 0;
+        int rightist = 0;
     
         Stack stack = new Stack(100);
-        stack.push(this);
+        TreeNode current = root;
+
+        stack.push(new Element(current));
     
         while (!stack.isEmpty()) {
-            Node current = stack.pop();
-    
-            // Check if the current node is leftist or rightist
+            current = stack.pop().getData();
             if (current.left != null && current.right == null) {
                 leftist++;
             } else if (current.right != null && current.left == null) {
                 rightist++;
             }
     
-            // Push children of the current node onto the stack
             if (current.left != null) {
-                stack.push(current.left);
+                stack.push(new Element(current.left));
             }
             if (current.right != null) {
-                stack.push(current.right);
+                stack.push(new Element(current.right));
             }
         }
     

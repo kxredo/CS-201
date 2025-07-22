@@ -1,20 +1,23 @@
 
 public class q13_undelete {
 
+    /*
+Write a function which undeletes the recently deleted value from the
+ hash table. Assume that linear probing is used as the collision strategy.
+ void undelete(int value)
+     */
     public void undelete(int value) {
-
-        int index = hashFunction(value)
-        
-        for (int i = 0; i < table.length; i++) {
-            // If we find the value and it's marked as deleted, undelete it
-            if (table[index] != null && table[index].data == value && deleted[index]) {
-                deleted[index] = false; // Mark as undeleted
-                return;
-            }
-            if (table[index] == null) {
+        int idx = value % N;
+        while (table[idx] != value || !deleted[idx]) {
+            idx = (idx + 1) % N;
+            // Stop if we've looped all the way around (value not found)
+            if (idx == value % N) {
                 return;
             }
         }
+        // Undelete the value
+        deleted[idx] = false;
     }
+}
 
 }

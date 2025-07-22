@@ -12,8 +12,8 @@ Write the recursive method
     int averages() {
         int count = 0;
         if (left != null && right != null) {
-            if (2 * this.data == left.data + right.data) { // (left + right / 2) = node's key
-                count = 1;
+            if (data == (left.data + right.data) / 2) { // (left + right / 2) = node's key
+                count++;
             }
         }
         if (left != null) {
