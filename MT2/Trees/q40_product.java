@@ -9,11 +9,10 @@ Write the non-recursive method
 public class q40_product {
 
     public int product() {
-
+        int product = 1;
         Stack stack = new Stack(100);
         TreeNode current = root;
         
-        int product = 1;
         stack.push(new Element(current));
 
         while (!stack.isEmpty()) {

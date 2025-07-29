@@ -9,27 +9,26 @@ plementation)
  as many elements as needed (no extra or missing elements). You can
  use at most one external hash.
 */
-    public static int[] difference(int[] list1, int[] list2) {
+
+    
+
+    int[] difference(int[] list1, int[] list2) {
         Hash hash = new Hash();
         int index = 0;
 
-        // Insert elements of list2 into the hash table
         for (int num : list2) {
             hash.insert(num);
         }
 
-        // Count elements in list1 that are not in list2
         for (int num : list1) {
             if (!hash.search(num)) {
                 index++;
             }
         }
 
-        // Create result array with the correct size
         int[] result = new int[index];
         index = 0;
 
-        // Fill result array with elements from list1 that are not in list2
         for (int num : list1) {
             if (!hash.search(num)) {
                 result[index++] = num;

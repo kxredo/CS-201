@@ -10,30 +10,24 @@ Write another constructor method
  not allowed to use enqueue, dequeue, isEmpty functions. You should
  solve the question for array implementation.
  */
-public Queue(Queue[] list) {
 
-        int totalCapacity = 0;
+
+Queue(Queue[] list){
+        int totalCount = 0;
         for (Queue q : list) {
-            totalCapacity += (q.last - q.first) % q.N;
+            totalCount += (q.last - q.first + q.N) % q.N; // Count elements in each queue
         }
-
-        this.array = new Element[totalCapacity + 1];
+        this.N = totalCount;
+        this.array = new Element[N];
         this.first = 0;
         this.last = 0;
-        this.N = totalCapacity + 1;
 
-        boolean hasElements = true;
         int index = 0;
-        while (hasElements) {
-            hasElements = false;
-            for (Queue q : list) {
-                if (index < (q.last - q.first) % q.N) {
-                    Element element = q.array[(q.first + index) % q.N];
-                    this.array[this.last] = new Element(element.getData());
-                    this.last++;
-                    hasElements = true;
-                }
+        for (Queue q : list) {
+            int count = (q.last - q.first + q.N) % q.N; // Number of elements in the current queue
+            for (int i = 0; i < count; i++) {
+                array[index++] = new Element(q.array[(q.first + i) % q.N]); // Recreate elements
             }
-            index++;
         }
+        last = index;
     }

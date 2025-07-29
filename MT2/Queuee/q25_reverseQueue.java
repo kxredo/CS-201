@@ -14,7 +14,7 @@ queue(), dequeue(), or peek() methods. You must directly manipulate
 */
 public class q25_reverseQueue {
 
-    public void reverseQueue() {
+    void reverseQueue() {
         Node prev = null;
         Node current = front;
         Node next = null;
@@ -27,6 +27,17 @@ public class q25_reverseQueue {
             current = next;
         }
         front = prev;  // New head of the reversed list
+    }
+
+    void reverseQueue(){
+        Element[] newArray = new Element[N];
+        int count = (last - first + N) % N; // Number of elements in the queue
+        for (int i = 0; i < count; i++) {
+            newArray[i] = array[(first + count - 1 - i) % N];
+        }
+        array = newArray;
+        first = 0;
+        last = count;
     }
 }
 }

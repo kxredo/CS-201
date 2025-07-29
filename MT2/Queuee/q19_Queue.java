@@ -1,7 +1,9 @@
 package Queuee;
+
 import java.util.Queue;
 
 import org.w3c.dom.Node;
+
 /*
 Write another constructor method
  void Queue(Queue[] list)
@@ -14,19 +16,14 @@ Write another constructor method
 public class q19_Queue {
 
     public Queue(Queue[] list) {
-        for (Queue queue : list) {
-            Node current = queue.first;
-            while (current != null) {
-                Node newNode = new Node(current.data);
+        for (Queue q : list) {
+            if (!q.isEmpty()) {
                 if (first == null) {
-                    first = newNode;
-                    last = newNode;
+                    first = q.first; // Set first if it's empty
                 } else {
-                    last.next = newNode;
-                    last = newNode;
+                    last.setNext(q.first); // Link to the end of the current queue
                 }
-                current = current.next;
-                size++;
+                last = q.last; // Update last to the last of the current queue
             }
         }
     }

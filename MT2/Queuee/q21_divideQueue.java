@@ -1,36 +1,36 @@
 package Queuee;
-
+/*
+/*
+    Write the method
+ Queue[] divideQueue(int k)
+ which constructs an array of list based queues by dividing the origi
+nal queue into k equal parts. The first, second, ..., k’th element of
+ the original queue will be the first element of the first, second, ..., k’th
+ output queues, etc. The elements of the output queues should be recre
+ated (not copied from the original queue). You are not allowed to use
+ enqueue, dequeue, isEmpty functions. You should solve the question
+ for list implementation.
+     */
 import java.util.Queue;
 
 import org.w3c.dom.Node;
 
 public class q21_divideQueue {
 
-    Queue[] divideQueue(int k) {
-        Queue[] result = new Queue[k];
+    public Queue[] divideQueue(int k) {
+        int count = (last - first + N) % N; // Number of elements in the queue
+        int partSize = count / k; // Size of each part
+        Queue[] queues = new Queue[k];
         for (int i = 0; i < k; i++) {
-            result[i] = new Queue();
+            queues[i] = new Queue(partSize);
         }
 
-        Node current = first;
-        int index = 0;
-
-        while (current != null) {
-            Node newNode = new Node(current.key, null);
-
-            if (result[index].first == null) {
-                result[index].first = newNode;
-                result[index].last = newNode;
-            } else {
-                result[index].last.next = newNode;
-                result[index].last = newNode;
-            }
-
-            current = current.next;
-            index = (index + 1) % k;
+        for (int i = 0; i < count; i++) {
+            int queueIndex = i % k;
+            Element element = new Element(array[(first + i) % N]); // Recreate element
+            queues[queueIndex].enqueue(element);
         }
-
-        return result;
+        return queues;
     }
 
 }

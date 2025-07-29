@@ -11,17 +11,16 @@ boolean sumOfFourK(int[] array, int K)
      */
     boolean sumOfFourK(int[] array, int K) {
         Hash hash = new Hash(array.length);
-        int n = array.length;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
                 int sum = array[i] + array[j];
                 hash.insert(sum);
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
                 int complement = K - (array[i] + array[j]);
                 if (hash.search(complement) != null) {
                     return true;

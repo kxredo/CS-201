@@ -17,14 +17,15 @@ int [] sortByHashing(int[] array)
                 max = value;
             }
         }
-
         Hash hash = new Hash(max + 1);
+
         for (int value : array) {
             hash.insert(value);
         }
 
         int[] sortedArray = new int[array.length];
         int index = 0;
+
         for (int i = 0; i < hash.table.length; i++) {
             if (hash.table[i] != null) {
                 sortedArray[index++] = hash.table[i].getData();

@@ -4,39 +4,52 @@ import org.w3c.dom.Node;
 
 public class q17_dequeue {
 
-    // Array Implementation
+    /*
+ Write the methods
+ Element dequeue(int k), Node dequeue(int k)
+ which dequeues data as the k’th element from the first. dequeue(1) is
+ equal to the original dequeue, that is, the first element has index 1.
+ You are not allowed to use any queue methods and any external struc
+tures (arrays, queues, trees, etc). You are allowed to use attributes,
+ constructors, getters and setters. Write the method for both array and
+ linked list implementations.
+     */
     public Element dequeue(int k) {
 
-        // Get the element to be dequeued
-        Element dequeuedElement = array[front + k - 1];
+        int index = (first + k - 1) % N; // Calculate the index to dequeue
+        Element element = array[index]; // Get the element to dequeue
 
-        // Shift all elements after the k-th element to the left
-        for (int i = front + k - 1; i < front + size - 1; i++) {
-            array[i] = array[i + 1];
+        // Shift elements to fill the gap
+        for (int i = index; i != last; i = (i + 1) % N) {
+            array[i] = array[(i + 1) % N];
         }
-
-        // Update the size
-        size--;
-
-        return dequeuedElement;
+        last = (last - 1 + N) % N; // Update last pointer
+        return element;
     }
 
     // Linked List Implementation
     public Node dequeue(int k) {
-        Node dequeuedNode;
 
-        // Traverse to the (k-1)-th node
-        Node current = head;
-        for (int i = 1; i < k - 1; i++) {
-            current = current.next;
+        Node current = first;
+        Node previous = null;
+        int index = 1; // Start from 1 for the first element
+
+        while (current != null && index < k) {
+            previous = current;
+            current = current.getNext();
+            index++;
         }
-        // Remove the k-th node
-        dequeuedNode = current.next;
-        current.next = current.next.next;
+
+        if (previous != null) {
+            previous.setNext(current.getNext()); // Bypass the current node
+        } else {
+            first = current.getNext(); // If k is 1, update first
+        }
+
+        if (current == last) {
+            last = previous; // If we removed the last element, update last
+        }
+
+        return current; // Return the dequeued node
     }
-    // Update size
-    size--;
-    
-    return dequeuedNode ;
-}
 }

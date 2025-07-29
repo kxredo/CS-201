@@ -10,10 +10,11 @@ Element search(int value)
  */
     public Element search(int value) {
 
-        for(int i = 0;i<table.length;i++)
+        for(int i = 0; i < table.length; i++)
             if(table[i].getData() == value) {
                 return table[i]; // Key found
             }
+        return null;
            
         }
     }

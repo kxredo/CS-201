@@ -1,6 +1,7 @@
 
 import java.util.HashSet;
 import java.util.Set;
+
 /*
 boolean sumOfTwoK(int[] array, int K)
  that takes an array of integers as a parameter and returns true if the
@@ -11,18 +12,12 @@ boolean sumOfTwoK(int[] array, int K)
 public class q25_sumOfTwo {
 // Create a hash table for storing the elements
 
-    public static boolean sumOfTwoK(int[] array, int K) {
+    boolean sumOfTwoK(int[] array, int K) {
         Hash hash = new Hash(array.length);
-
         for (int i = 0; i < array.length; i++) {
-            int complement = K - array[i];     
-            int index = hash.hashFunction(complement);
-            
-            while (hash.table[index] != null) {
-                if (hash.table[index].key == complement) {     
-                    return true;
-                }
-                index = (index + 1) % hash.table.length; // 
+            int complement = K - array[i];
+            if (hash.search(complement) != null) {
+                return true;
             }
             hash.insert(array[i]);
         }

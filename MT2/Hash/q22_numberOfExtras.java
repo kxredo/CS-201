@@ -13,27 +13,18 @@ Write a static method in Hash class
  2 1 2 1 2 3 1 2 1 2 →7extras (four 2, three 1)
  1 1 1 1 1 1 →5extras (five 1)
      */
-// count
-// N is size of array
-// value = array[i]
-// use hashing (int index = hashFunction(value))
     int numberOfExtras(int[] array) {
         Hash hash = new Hash(array.length);
-        int extras = 0;
+        int count = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            int index = hash.hashFunction(array[i]);
-
-            while (hash.table[index] != null) {
-                if (hash.table[index].getData() == array[i]) {
-                    extras++;
-                    break;
-                }
-                index = (index + 1) % N;
+        for (int value : array) {
+            if (hash.search(value) == null) {
+                hash.insert(value);
+            } else {
+                count++;
             }
-            hash.table[index] = new Element(array[i]);
         }
-        return extras;
+        return count;
     }
 
 }

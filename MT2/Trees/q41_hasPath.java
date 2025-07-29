@@ -18,11 +18,9 @@ public class q41_hasPath {
             return false; 
         }
 
-        // Create a new array for the reduced path
         int[] reducedPath = new int[path.length - 1];
         System.arraycopy(path, 1, reducedPath, 0, path.length - 1);
 
-        // Check left and right children
         boolean leftHasPath = (left != null) && left.hasPath(reducedPath);
         boolean rightHasPath = (right != null) && right.hasPath(reducedPath);
 

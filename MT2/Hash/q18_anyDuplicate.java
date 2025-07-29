@@ -12,23 +12,15 @@ Write a static method that takes an array of integers as a parameter
  */
 public class q18_anyDuplicate {
 
-    public static boolean anyDuplicate(int[] array) {
+    boolean anyDuplicate(int[] array) {
         Hash hash = new Hash(array.length);
-
-        for (int i = 0; i < array.length; i++) {
-            int index = hash.hashFunction(array[i]);
-
-            while (hash.table[index] != null) {
-                if (hash.table[index].key == array[i]) {
-                    return true; // Duplicate found
-                }
-                index = (index + 1) % hash.length; // Linear probing
+        for (int value : array) {
+            if (hash.search(value) != null) {
+                return true; // Duplicate found
             }
-
-            hash.table[index] = new Element(array[i]);
+            hash.insert(value);
         }
-
-        return false;
+        return false; // No duplicates found
     }
 
 }

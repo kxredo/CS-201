@@ -16,7 +16,6 @@ tation.
     public void removeOddIndexed() {
         Queue tempQueue = new Queue();
 
-        // Move even-indexed elements to the temp queue
         while (!isEmpty()) {
             Element element = dequeue();
             if (size % 2 == 0) {
@@ -24,7 +23,6 @@ tation.
             }
         }
 
-        // Move elements back from the temp queue to the original queue
         while (!tempQueue.isEmpty()) {
             enqueue(tempQueue.dequeue());
         }

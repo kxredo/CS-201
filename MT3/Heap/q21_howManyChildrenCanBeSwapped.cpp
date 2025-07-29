@@ -6,23 +6,13 @@ Write the method in MinHeap class
  in O(N) time.
 */
 
-public int howManyChildrenCanBeSwapped() {
-    int count = 0;
-    
-    // Iterate through all potential parent nodes
-    for (int i = 0; i < count; i++) {
-        int leftChild = 2 * i + 1;
-        int rightChild = 2 * i + 2;
-        
-        // Check if the node has two children
-        if (rightChild < count) {
-            if (array[i].getData() <= array[leftChild].getData() && 
-                array[i].getData() <= array[rightChild].getData()) {
+int numberOfPlacesToReplace(int key) {
+        int count = 0;
+        for (int i = 0; i < count; i++) {
+            if (array[i].getData() > key) {
                 count++;
             }
         }
+        return count;
     }
-    
-    return count;
-}
 

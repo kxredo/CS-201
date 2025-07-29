@@ -9,19 +9,19 @@ public class q29_equalPairSums {
  use at most one external hash. Hint: You must store pairwise sums
  in the external hash table.
      */
-    public static boolean equalPairSums(int[] array) {
+    boolean equalPairSums(int[] array) {
         Hash hash = new Hash();
-        int n = array.length;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
                 int sum = array[i] + array[j];
-                if (hash.search(sum)) {
-                    return true; // Found a pair with the same sum
+                
+                if (hash.search(sum) != null) {
+                    return true; 
                 }
-                hash.insert(sum); // Store the sum in the hash table
+                hash.insert(sum); 
             }
         }
-        return false; // No pairs found with the same sum
+        return false;
     }
 }

@@ -5,16 +5,21 @@ public class q11_satisfyTreeProperty {
     public boolean satisfyTreeProperty(TreeNode root) {
         return satisfyTreeProperty(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-    
-    private boolean satisfyTreeProperty(TreeNode node, int min, int max) {
-        if (node == null) {
-            return true;
+
+    boolean satisfyTreeProperty() {
+        if (left == null && right == null) {
+            return true; // Leaf node satisfies the property
         }
-        // Check if the current node's value is within the valid range
-        if (node.val <= min || node.val >= max) {
-            return false;
+
+        int leftValue = (left != null) ? left.data : 0;
+        int rightValue = (right != null) ? right.data : 0;
+
+        if (data == leftValue + rightValue) {
+            boolean leftSatisfies = (left == null || left.satisfyTreeProperty());
+            boolean rightSatisfies = (right == null || right.satisfyTreeProperty());
+            return leftSatisfies && rightSatisfies;
         }
-        // Recursively check the left and right subtrees
-        return satisfyTreeProperty(node.left, min, node.val) && satisfyTreeProperty(node.right, node.val, max);
+
+        return false; // Current node does not satisfy the property
     }
 }

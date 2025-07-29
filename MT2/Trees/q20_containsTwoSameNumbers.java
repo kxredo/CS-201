@@ -9,14 +9,25 @@ Write a recursive function that checks whether the binary search tree
  contains two same numbers or not.
  boolean containsTwoSameNumbers()
      */
-    private boolean containsTwoSameNumbers(TreeNode left, TreeNode right) {
-        if (left != null && right != null) {
-            if (left.data == right.data) {
-                return true;
-            }
-            return containsTwoSameNumbers(left.left, right.right) || containsTwoSameNumbers(left.right, right.left);
+    boolean containsTwoSameNumbers() {
+        if (left == null && right == null) {
+            return false; // Leaf node does not contain two same numbers
         }
-        return false;
+        boolean found = false;
+        if (left != null) {
+            if (left.data == data) {
+                found = true;
+            } else {
+                found = left.containsTwoSameNumbers();
+            }
+        }
+        if (!found && right != null) {
+            if (right.data == data) {
+                found = true;
+            } else {
+                found = right.containsTwoSameNumbers();
+            }
+        }
+        return found;
     }
-
-
+}

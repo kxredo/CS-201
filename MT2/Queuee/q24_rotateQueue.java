@@ -13,16 +13,14 @@ Write a method
  */
 public class q24_rotateQueue {
 
-    public void rotateQueue(int k) {
-        // Make a copy of the elements in queue order
-
-        int[] temp = new int[size];
-        for (int i = 0; i < size; i++) {
-            temp[i] = arr[(front + i) % arr.length];
+    public void rotateQueue(int k){
+        
+        Element[] newArray = new Element[N];
+        int count = (last - first + N) % N; // Number of elements in the queue
+        for (int i = 0; i < count; i++) {
+            newArray[(i + k) % N] = array[(first + i) % N];
         }
-
-        // Rotate: Copy elements from temp to arr (in queue order)
-        for (int i = 0; i < size; i++) {
-            arr[(front + i) % arr.length] = temp[(i + k) % size];
-        }
+        array = newArray;
+        first = 0;
+        last = count;
     }

@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import org.w3c.dom.Node;
 
 /*
-Write anhash function thatmaps a linked list intoanhashvalue.
- Assume that thehashvalueof a linked list canbeobtainedfirstby
- summingupthekeyvaluesof thenodes inthe linked list andthen
- hashingthesum.
+Write an hash function that maps a linked list into an hash value.
+ Assume that the hash value of a linked list can be obtained first by
+ summing up the key values of the nodes in the linked list and then
+ hashing thesum.
  */
 public class q2_hashFunction {
 

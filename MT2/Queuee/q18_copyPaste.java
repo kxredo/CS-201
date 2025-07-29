@@ -1,4 +1,5 @@
 package Queuee;
+
 import java.util.Queue;
 
 /*
@@ -14,40 +15,43 @@ Write the method for array implementation
 public class q18_copyPaste {
 
     public void copyPaste(Queue src, int index) {
-        int srcSize = src.size;             // Size of the source queue
-        int[] srcArray = src.array;         // Array of the source queue
-    
-        // Step 1: Shift elements in the destination queue to create space for src
-        for (int i = size - 1; i >= index; i--) {
-            array[i + srcSize] = array[i];
+
+        int count = (last - first + N) % N; // Number of elements in the queue
+
+        for (int i = count - 1; i >= index; i--) {
+            array[(first + i + src.last - src.first) % N] = array[(first + i) % N];
         }
-    
-        // Step 2: Copy elements from src to the destination at the specified index
-        for (int i = 0; i < srcSize; i++) {
-            array[index + i] = srcArray[i];
+
+        for (int i = 0; i < src.last - src.first; i++) {
+            array[(first + index + i) % N] = new Element(src.array[(src.first + i) % src.N]); // Recreate element
         }
-    
-        // Step 3: Update the size of the destination queue
-        size = size + srcSize;
+        last = (last + (src.last - src.first)) % N; // Update last pointer
     }
 
     // Linked List
     public void copyPaste(Queue src, int index) {
-        Node current = head; // Head of the destination queue
-        Node srcHead = src.head;      // Head of the source queue
-        Node srcTail = src.tail;      // Tail of the source queue
-        int srcSize = src.size;       // Size of the source queue
-    
-            // Traverse to the node before the index
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-            // Connect src queue to destination queue
-            srcTail.next = current.next;
-            current.next = srcHead;
+        Node current = src.first;
+        Node previous = null;
+        int count = 0;
+
+        while (current != null && count < index) {
+            previous = current;
+            current = current.getNext();
+            count++;
         }
-    
-        // Update size of the destination queue
-        size += srcSize;
+
+        if (previous != null) {
+            previous.setNext(src.first); // Link previous part to src
+        } else {
+            first = src.first; // If index is 0, set first to src's first
+        }
+
+        if (src.last != null) {
+            last = src.last; // Update last to src's last
+        }
+
+        if (current != null) {
+            last.setNext(current);
+        }
     }
 }

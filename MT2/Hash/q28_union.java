@@ -14,17 +14,15 @@ public class q28_union {
         int count = 0;
 
         for (int value : list1) {
-            hash.insert(value);
+            if (hash.search(value) == null) {
+                hash.insert(value);
+                count++;
+            }
         }
 
         for (int value : list2) {
             if (hash.search(value) == null) {
                 hash.insert(value);
-            }
-        }
-
-        for (Element element : hash.table) {
-            if (element != null) {
                 count++;
             }
         }
@@ -32,9 +30,9 @@ public class q28_union {
         int[] result = new int[count];
         int index = 0;
 
-        for (Element element : hash.table) {
-            if (element != null) {
-                result[index++] = element.getData();
+        for (int i = 0; i < hash.table.length; i++) {
+            if (hash.table[i] != null) {
+                result[index++] = hash.table[i].getData();
             }
         }
         return result;

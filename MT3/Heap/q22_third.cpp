@@ -1,38 +1,34 @@
 Write the method in MaxDHeap class
-int third ()
-that returns the third maximum number in the heap. Your method
-should run in O(d2) time.
+    int
+    third()
+        that returns the third maximum number in the heap.Your method
+    should run in O(d2) time.
 
+    public int third()
+{
+    
+    int max = array[0].getData();
+    int secondMax = Integer.MIN_VALUE;
+    int thirdMax = Integer.MIN_VALUE;
 
-int MaxDHeap::third() {
-    int second = 0;
-    int third = 0;
-
-    for(int i = 0; i <= d; i++){
-        int child = i;
-        if(child < count){
-            if(array[child].getData() > second){
-                third = second;
-                second = array[child].getData();
-            } else {
-                if(array[child].getData() > third){
-                    third = array[child].getData();
-                }}}}
-
-    for(int i = 0; i <= d; i++){
-        for(int j = 0; j <= d; j++){
-            int grandChild = d*i + j;
-            if(grandChild < count){
-                if(array[grandChild].getData() > second){
-                    third = second;
-                    second = array[grandChild].getData();
-                } else {
-                    if(array[grandChild].getData() > third){
-                        third = array[grandChild].getData();
-                    }
-                }
-            }
+    for (int i = 1; i < count; i++)
+    {
+        int currentValue = array[i].getData();
+        if (currentValue > max)
+        {
+            thirdMax = secondMax;
+            secondMax = max;
+            max = currentValue;
+        }
+        else if (currentValue > secondMax && currentValue < max)
+        {
+            thirdMax = secondMax;
+            secondMax = currentValue;
+        }
+        else if (currentValue > thirdMax && currentValue < secondMax)
+        {
+            thirdMax = currentValue;
         }
     }
-    return third;
+    return thirdMax;
 }

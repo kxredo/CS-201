@@ -9,7 +9,13 @@ Write the recursive method
  satisfy the following property: The node’s key is the average of its
  children (left and right children).
      */
-    int averages() {
+    
+    
+    
+    
+    
+    
+     int averages() {
         int count = 0;
         if (left != null && right != null) {
             if (data == (left.data + right.data) / 2) { // (left + right / 2) = node's key

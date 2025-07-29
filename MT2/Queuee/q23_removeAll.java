@@ -9,7 +9,7 @@ tions. You should solve the question for list implementation.
  */
 public class q23_removeAll {
 
-    public void removeAll(Queue[] list) {
+    void removeAll(Queue[] list) {
         
         for (Queue q : list) {
             Node tmp = q.first;
