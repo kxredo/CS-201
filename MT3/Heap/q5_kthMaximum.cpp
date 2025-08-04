@@ -1,14 +1,17 @@
 
 
-HeapNode Heap::kthMaximum(int k) {
-    
-    // Create a copy of the heap to preserve the original heap
-    Heap tempHeap(*this);
+HeapNode kthMaximum(int k)
+{
 
-    HeapNode kthMax;
-    for (int i = 0; i < k; ++i) {
-        kthMax = tempHeap.deleteTop();
+    MaxHeap tempHeap = new MaxHeap(count);
+    for (int i = 0; i < count; i++)
+    {
+        tempHeap.insert(array[i]);
     }
-
-    return kthMax;
+    HeapNode result = null;
+    for (int i = 0; i < k; i++)
+    {
+        result = tempHeap.delete();
+    }
+    return result;
 }

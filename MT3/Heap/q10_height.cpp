@@ -7,26 +7,16 @@ Given the index of a heap node, write a function that obtains the height
 int height(int index)
 {
 
-    int leftChild = 2 * index + 1;
-    int rightChild = 2 * index + 2;
-
-    int leftHeight = 0;
-    int rightHeight = 0;
-    int maxHeight;
-
-    if (leftChild < count){
-        leftHeight = height(leftChild);
+    int height = 0;
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
+    if (left < count)
+    {
+        height = Math.max(height, height(left));
     }
-
-    if (rightChild < count){
-        rightHeight = height(rightChild);
+    if (right < count)
+    {
+        height = Math.max(height, height(right));
     }
-
-    if (leftHeight > rightHeight){
-        maxHeight = leftHeight;
-    }
-    else {
-        maxHeight = rightHeight;
-    }
-    return 1 + maxHeight;
-    }
+    return height + 1; // Include the current node
+}

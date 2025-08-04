@@ -26,6 +26,7 @@ int Heap::descendants(int no) {
 
 
 
+
 int descendants(int no, int d, int* heap, int count) {
     int numDescendants = 0;
 
