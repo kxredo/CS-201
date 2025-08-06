@@ -9,7 +9,7 @@ int Graph::islands() {
     for (int i = 0; i < vertexCount; ++i) {
         bool isIsland = true;
         for (int j = 0; j < vertexCount; ++j) {
-            if (edges[i][j] != 0 || edges[j][i] != 0) {
+            if (edges[i][j] != 0 || edges[j][i] != 0) { // if there is outgoing or incoming
                 isIsland = false;
                 break;
             }

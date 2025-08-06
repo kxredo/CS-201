@@ -8,7 +8,7 @@ int GraphMatrix::numberOfSources() const {
     for (int i = 0; i < vertexCount; i++) {
         bool isSource = true;
         for (int j = 0; j < vertexCount; j++) {
-            if (edges[j][i] == 0) { //if there is an edge from j to i, it's not a source
+            if (edges[j][i] != 0) { //if there is an edge from j to i, it's not a source
                 isSource = false;
                 break;
             }

@@ -9,7 +9,7 @@ Graph Graph::reverseGraph() {
     for (int i = 0; i < vertexCount; ++i) {
         for (int j = 0; j < vertexCount; ++j) {
             if (edges[i][j] != 0) { //edges[from][to]
-                reversedGraph->addEdge(j, i, edges[i][j]); // addEge(from, to, weight)
+                reversedGraph->addEdge(j, i, edges[i][j]); 
             }
         }
     }

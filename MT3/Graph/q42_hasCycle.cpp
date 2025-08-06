@@ -1,5 +1,14 @@
 package MT3.Graph;
+/*
+ Given a directed graph represented by adjacency matrix,
+ write a recursive method
+ bool hasCycle(int v, bool∗ visited )
 
+ in the Graph class that determines whether the graph contains any
+ cycles starting form vertex v. Use the same idea in Depth-First Search
+ (DFS). Your method should return true if there is at least one cycle in
+ the graph, and false otherwise.
+ */
 public class q42_hasCycle {
 
     boolean hasCycle(int v, boolean[] visited) {

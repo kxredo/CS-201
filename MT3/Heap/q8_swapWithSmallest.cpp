@@ -7,16 +7,23 @@ void Heap::swapWithSmallest(int index) {
     int smallestChild = index; //smallest is parent
     
 
-    if (leftChild < count && array[leftChild].getData() < array[smallestChild].getData()) {
+    if (leftChild < count) 
+    {
+        if(array[leftChild].getData() < array[smallestChild].getData(){
         smallestChild = leftChild;
     }
+}
 
-    if (rightChild < count && array[rightChild].getData() < array[smallestChild].getData()) {
+    if (rightChild < count) 
+    {
+        if(array[rightChild].getData() < array[smallestChild].getData(){
         smallestChild = rightChild;
     }
+}
 // if smallest value is NOT parent
 // swap parent with smallestChild
     if (smallestChild != index) {
         swapNode(index, smallestChild);
     }
 }
+
